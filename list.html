@@ -1,0 +1,498 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ethereal Kiosk - Directory</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700;900&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#4350ae",
+              "on-background": "#191c1e",
+              "surface-bright": "#f7f9fb",
+              "on-primary-fixed": "#001a40",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "on-secondary-fixed": "#001f24",
+              "on-secondary-fixed-variant": "#004f58",
+              "surface-container-high": "#e6e8ea",
+              "surface-container": "#eceef0",
+              "surface-variant": "#e0e3e5",
+              "secondary-fixed-dim": "#00daf3",
+              background: "#f7f9fb",
+              "surface-tint": "#115cb9",
+              "surface-container-low": "#f2f4f6",
+              "inverse-on-surface": "#eff1f3",
+              "outline-variant": "#c2c6d4",
+              tertiary: "#2a3795",
+              "on-tertiary-fixed-variant": "#303c9a",
+              "on-surface-variant": "#424752",
+              error: "#ba1a1a",
+              secondary: "#006875",
+              "on-tertiary-container": "#c8cdff",
+              "secondary-fixed": "#9cf0ff",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#d7e2ff",
+              "on-secondary-container": "#00616d",
+              "inverse-primary": "#acc7ff",
+              "surface-container-lowest": "#ffffff",
+              primary: "#003f87",
+              "on-tertiary-fixed": "#000c62",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-container": "#00e3fd",
+              "primary-container": "#0056b3",
+              "primary-fixed-dim": "#acc7ff",
+              "tertiary-fixed": "#dfe0ff",
+              surface: "#f7f9fb",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#bcc2ff",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#191c1e",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#bbd0ff",
+              outline: "#727784",
+              "inverse-surface": "#2d3133",
+              "on-primary-fixed-variant": "#004491",
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Public Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background:
+          radial-gradient(circle at 0% 0%, #d7e2ff 0%, transparent 50%),
+          radial-gradient(circle at 100% 100%, #9cf0ff 0%, transparent 50%),
+          #f7f9fb;
+        min-height: 100vh;
+      }
+      .glass-card {
+        backdrop-filter: blur(32px) saturate(150%);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        vertical-align: middle;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="font-body text-on-surface">
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-white/40 dark:bg-slate-900/40 backdrop-blur-[32px] rounded-b-[32px] shadow-xl shadow-blue-900/5 font-headline tracking-tight"
+    >
+      <div class="flex items-center gap-3">
+        <span
+          class="material-symbols-outlined text-blue-800 dark:text-blue-300 text-2xl"
+          data-icon="account_balance"
+          >account_balance</span
+        >
+        <span
+          class="text-2xl font-black text-blue-900 dark:text-white tracking-tighter"
+          >ETHÉREAL</span
+        >
+      </div>
+      <nav class="hidden md:flex items-center gap-8">
+        <a
+          class="text-blue-700 dark:text-blue-300 font-bold hover:bg-white/20 transition-all scale-95 active:opacity-80"
+          href="#"
+          >Home</a
+        >
+        <a
+          class="text-slate-600 dark:text-slate-400 hover:bg-white/20 transition-all scale-95 active:opacity-80"
+          href="#"
+          >Explore</a
+        >
+        <a
+          class="text-slate-600 dark:text-slate-400 hover:bg-white/20 transition-all scale-95 active:opacity-80"
+          href="#"
+          >Activity</a
+        >
+        <a
+          class="text-slate-600 dark:text-slate-400 hover:bg-white/20 transition-all scale-95 active:opacity-80"
+          href="#"
+          >Support</a
+        >
+      </nav>
+      <div class="flex items-center gap-4">
+        <button
+          class="px-4 py-2 rounded-full bg-white/20 text-blue-900 font-semibold text-sm hover:bg-white/40 transition-all"
+        >
+          UZ|RU|EN
+        </button>
+      </div>
+    </header>
+    <main class="pt-32 pb-40 px-6 max-w-7xl mx-auto">
+      <!-- Hero Search Section -->
+      <section class="mb-16">
+        <h1
+          class="text-6xl font-black font-headline tracking-tighter text-primary mb-6 leading-none"
+        >
+          Global <br /><span class="text-secondary">Directory</span>
+        </h1>
+        <div class="relative max-w-2xl">
+          <div
+            class="absolute inset-y-0 left-6 flex items-center pointer-events-none"
+          >
+            <span
+              class="material-symbols-outlined text-outline"
+              data-icon="search"
+              >search</span
+            >
+          </div>
+          <input
+            class="w-full h-16 pl-16 pr-8 bg-surface-container-lowest/60 glass-card rounded-full border-none focus:ring-4 focus:ring-secondary-container/30 text-lg placeholder:text-outline transition-all"
+            placeholder="Search departments or personnel..."
+            type="text"
+          />
+        </div>
+      </section>
+      <!-- Bento Grid List -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Employee Card 1 - Featured -->
+        <div
+          class="lg:col-span-2 lg:row-span-2 glass-card bg-surface-container-lowest/40 rounded-xl p-10 flex flex-col justify-between group hover:bg-white/60 transition-all duration-500 shadow-2xl shadow-blue-900/5"
+        >
+          <div class="flex justify-between items-start">
+            <div class="w-32 h-32 rounded-xl overflow-hidden shadow-xl">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="professional portrait of a high-ranking official in a sharp navy suit with a clean modern architectural background and soft natural lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5PWDbcYjkV2AjNwwjcMtFVu8kxZ6oCsQIbBxXS6UJlnrNqW-A1AY70Z6jV4QibSrCikPT4VGgmQjouoELPJ9RC57qX7HbNIwrng8fRRUFSHmK5U1A-uNGS_QxCOBOXHUQ8t_njEWv2-ksfHznAUPNcAtlDeS7JsILaH9atJfFi2fueVqZ6TJdXefMl_1_1-MCiqCntqwhok6JbLEV8mJELrdS_dBYbmqkCLfzazOhQKLnkbmIbo2AtaLXirOCYhunex9pmGxhFlA"
+              />
+            </div>
+            <div
+              class="bg-primary-container text-white px-6 py-2 rounded-full font-bold text-sm tracking-widest"
+            >
+              DIRECTORATE
+            </div>
+          </div>
+          <div class="mt-12">
+            <h2
+              class="text-4xl font-black font-headline text-primary group-hover:translate-x-2 transition-transform duration-500"
+            >
+              Dr. Alaric Thorne
+            </h2>
+            <p class="text-xl text-secondary font-medium mt-2">
+              Chief of Digital Infrastructure
+            </p>
+            <p class="mt-6 text-on-surface-variant leading-relaxed max-w-md">
+              Overseeing the evolution of our national digital architecture with
+              a focus on seamless citizen integration and security.
+            </p>
+          </div>
+          <div class="mt-10 flex gap-4">
+            <button
+              class="bg-gradient-to-br from-primary to-primary-container text-white px-8 h-14 rounded-xl font-bold flex items-center gap-3 shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
+            >
+              <span class="material-symbols-outlined" data-icon="mail"
+                >mail</span
+              >
+              Contact Office
+            </button>
+            <button
+              class="w-14 h-14 glass-card bg-surface-container-lowest flex items-center justify-center rounded-xl text-primary hover:bg-primary hover:text-white transition-all"
+            >
+              <span class="material-symbols-outlined" data-icon="share"
+                >share</span
+              >
+            </button>
+          </div>
+        </div>
+        <!-- Organization Card -->
+        <div
+          class="glass-card bg-primary text-white rounded-xl p-8 flex flex-col justify-between shadow-2xl shadow-primary/30"
+        >
+          <div>
+            <span
+              class="material-symbols-outlined text-4xl text-secondary-fixed"
+              data-icon="hub"
+              >hub</span
+            >
+            <h3 class="text-2xl font-bold font-headline mt-6">
+              Cybernetics Division
+            </h3>
+            <p class="text-primary-fixed/80 mt-2">124 Members • Active</p>
+          </div>
+          <div class="mt-8 flex -space-x-4">
+            <div
+              class="w-12 h-12 rounded-full border-4 border-primary overflow-hidden"
+            >
+              <img
+                class="w-full h-full object-cover"
+                data-alt="close-up avatar of a diverse team member with a warm smile and soft office lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA9upliVe1DKgxmAK44MKEdZd9wCkdImu_wIyBsZK4jhe1zrubRlezE5t3saAqVCvvuTquVj_z4YZyrj4MydCHRZ3mW9LFXpiV8fkC9zoHfdyA0jlONRyG243NcdDyTNX0CCEzFlkjuxTzFvWfvEI04G7bEB7sCS8vLeebrbdpGMafaTI9LHpDNwc-oIcPeHFaht2h-YJ_9E0weHiNkdDVaZ2rEMyK4cp5K4ly1kKZ01l2mA1VGjsGWjoDX7-E-cHcg4escxvZfpI"
+              />
+            </div>
+            <div
+              class="w-12 h-12 rounded-full border-4 border-primary overflow-hidden"
+            >
+              <img
+                class="w-full h-full object-cover"
+                data-alt="professional avatar of a tech specialist with glasses and a friendly expression"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQJBb7yng4sK2zQbDeImZMh-vdElCZKX58O7hU9qmB3MZttkRk0j8av2dA6w3Z7lBSIyKls80Xdj2yeo_spCpZca-p_wvH5iqxuq9Gb1X9BfTro9i_DO2zxjX2k3BipAWrJwkkENbUK0brblFW96czRsVz8iB491yOc1elrBKzThLP5s4ZprJB2f8lQ-wPZ88u1TJWH7oaOLc5gUwae_7lNaw6zy1tLABqTqO3Qt4LcrzG5H5_qDEw_TVNLUGrozkRJqSv8pEOPEk"
+              />
+            </div>
+            <div
+              class="w-12 h-12 rounded-full border-4 border-primary overflow-hidden"
+            >
+              <img
+                class="w-full h-full object-cover"
+                data-alt="modern avatar of a project manager in a bright creative studio setting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhUKm2aSgZe3DkJRG__3ksJwnlDhoErrTQK05DXHfcJCCastj-hB_WUj3nC-KPzahvc0au3zCDWaUng-KN4SkmsyQx_IrHAVHZd-oEKK54njwGcaYuWJTRu9Q3nItxrXw2U0CEqQWNfCODdXLN4UDGy0ZwXsAGB1pfPIikR4Iewf2JPFb1oC1q11ExQ_SrYD0Wnm3qHTbiMX9esOu62MmXq42_MKO_8wV264ik95r-sxwMHKLGzDbLM4P0KVKjUCF8qwut7vQf0TY"
+              />
+            </div>
+            <div
+              class="w-12 h-12 rounded-full border-4 border-primary bg-primary-container flex items-center justify-center text-xs font-bold"
+            >
+              +121
+            </div>
+          </div>
+          <a
+            class="mt-8 text-secondary-fixed font-bold flex items-center gap-2 group"
+            href="#"
+          >
+            View Network
+            <span
+              class="material-symbols-outlined group-hover:translate-x-2 transition-transform"
+              data-icon="arrow_forward"
+              >arrow_forward</span
+            >
+          </a>
+        </div>
+        <!-- Employee Card 2 -->
+        <div
+          class="glass-card bg-surface-container-lowest/40 rounded-xl p-8 hover:bg-white/60 transition-all duration-500 shadow-xl shadow-blue-900/5"
+        >
+          <div class="flex items-center gap-6">
+            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="clean professional headshot of a woman with a confident expression in a bright minimalist office"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVKJFGIFTkTWEkK3P_7jr0japijwKtsdVJhsQfY-8ee2bJCHRuzEAtoctA7XJav6oIXGrGlTt4eBD3Z-Tg9zTYvQcTUyUNX9G3MralTCfP95-nzc63IWqc_t129RxczMMTEN55bDttjTmN1cAVfmR3NE9ZL_KIbPSmJ5ihLKk0lki5UzUOzeksEPhl9DVrUSDnOVhmTHzXa_XTrf3XAYdCgYFfVAIaO0FEAROpbESZQKx-MnChTV2F0ooArIs6aN86EUUQpkvfics"
+              />
+            </div>
+            <div>
+              <h4 class="text-xl font-bold font-headline text-primary">
+                Sarah Jenkins
+              </h4>
+              <p class="text-on-surface-variant font-medium text-sm">
+                Lead UI Architect
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs font-bold rounded-full"
+              >DESIGN</span
+            >
+            <span
+              class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs font-bold rounded-full"
+              >STRATEGY</span
+            >
+          </div>
+        </div>
+        <!-- Employee Card 3 -->
+        <div
+          class="glass-card bg-surface-container-lowest/40 rounded-xl p-8 hover:bg-white/60 transition-all duration-500 shadow-xl shadow-blue-900/5"
+        >
+          <div class="flex items-center gap-6">
+            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="professional portrait of an engineer with a focused gaze and high-tech laboratory background"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKb74VBWIs332q_Mnt6-zLVykqYRYCnJckHN78DkR2mQSQzcqVSMO1d1gDuO8Il00GpgHSLfvqFCM6bRFNig0vBljqP0p_sUfyQwtz6UDvCsWiBXH0_VVvPl4-JrsutvYxOLAEt-qGCs11Kw7hteNEo5mTjUnCYVucPViowBpNGfOvHoBohIScmgivwu8BAMyvJime1WBsL5Xj7tOuOSrZlBNIL2mNEON5pVZyTdiPekftTU-6VFACHKc1TlpWNVtyYc_JzVp0Avw"
+              />
+            </div>
+            <div>
+              <h4 class="text-xl font-bold font-headline text-primary">
+                Marcus Vane
+              </h4>
+              <p class="text-on-surface-variant font-medium text-sm">
+                Security Specialist
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs font-bold rounded-full"
+              >INFRA</span
+            >
+            <span
+              class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs font-bold rounded-full"
+              >CORE</span
+            >
+          </div>
+        </div>
+        <!-- Employee Card 4 -->
+        <div
+          class="glass-card bg-surface-container-lowest/40 rounded-xl p-8 hover:bg-white/60 transition-all duration-500 shadow-xl shadow-blue-900/5"
+        >
+          <div class="flex items-center gap-6">
+            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0">
+              <img
+                class="w-full h-full object-cover"
+                data-alt="friendly portrait of a customer success manager in a sunlit airy modern workspace"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAotRK91WmxE0ev22u593vjXq8wbPF0zg4Ap8E1AHGcDl1105YbC7inb67Gzlqn5Xs87jMHRzC60IeDQeh4FbcZTVMNGyF4bMGWrF-F-itQBgEEnmQGmsKoCOOFF8LPeC7HfCNp3W8cjAo0pcQBs_yWs7uiFvMqGXHRoYbXE4zNIc83zrQJmIoatujXxjag01jVcxnZm9lX-WpDNUJx2RP5Y2rGP9PSf4QImMAtF6qpChYJpXcYECRETb4aFlW8a5XB4fDv2GMVnj4"
+              />
+            </div>
+            <div>
+              <h4 class="text-xl font-bold font-headline text-primary">
+                Elena Rossi
+              </h4>
+              <p class="text-on-surface-variant font-medium text-sm">
+                Public Relations
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs font-bold rounded-full"
+              >MEDIA</span
+            >
+            <span
+              class="px-3 py-1 bg-surface-container text-on-surface-variant text-xs font-bold rounded-full"
+              >CITIZEN</span
+            >
+          </div>
+        </div>
+        <!-- Statistics Card -->
+        <div
+          class="lg:col-span-3 glass-card bg-secondary/10 rounded-xl p-10 flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+          <div class="text-center md:text-left">
+            <h3 class="text-3xl font-black font-headline text-secondary">
+              Departmental Health
+            </h3>
+            <p class="text-on-surface-variant mt-2 font-medium">
+              Real-time engagement across all government sectors
+            </p>
+          </div>
+          <div class="flex gap-12">
+            <div class="text-center">
+              <div class="text-4xl font-black text-primary">98%</div>
+              <div
+                class="text-xs font-bold tracking-widest text-outline uppercase mt-1"
+              >
+                Uptime
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-black text-primary">12.4k</div>
+              <div
+                class="text-xs font-bold tracking-widest text-outline uppercase mt-1"
+              >
+                Staff
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-black text-primary">0.4s</div>
+              <div
+                class="text-xs font-bold tracking-widest text-outline uppercase mt-1"
+              >
+                Latency
+              </div>
+            </div>
+          </div>
+          <div class="relative w-32 h-32 flex items-center justify-center">
+            <!-- Liquid Fill Circle Mockup -->
+            <svg class="w-full h-full transform -rotate-90">
+              <circle
+                class="text-surface-container-high"
+                cx="64"
+                cy="64"
+                fill="transparent"
+                r="58"
+                stroke="currentColor"
+                stroke-width="12"
+              ></circle>
+              <circle
+                class="text-secondary-fixed"
+                cx="64"
+                cy="64"
+                fill="transparent"
+                r="58"
+                stroke="currentColor"
+                stroke-dasharray="364.4"
+                stroke-dashoffset="91.1"
+                stroke-width="12"
+              ></circle>
+            </svg>
+            <span class="absolute text-xl font-black text-secondary">75%</span>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- BottomNavBar -->
+    <nav
+      class="fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-6 py-4 bg-white/40 dark:bg-slate-900/40 backdrop-blur-[40px] rounded-[48px] mb-8 mx-auto w-[90%] max-w-lg shadow-2xl shadow-blue-900/10 glass-refraction"
+    >
+      <a
+        class="flex items-center justify-center text-blue-900/60 dark:text-slate-300 p-4 hover:scale-110 transition-transform active:scale-90 duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="home">home</span>
+      </a>
+      <a
+        class="flex items-center justify-center bg-gradient-to-br from-blue-700 to-blue-500 text-white rounded-full p-4 shadow-[0_0_20px_rgba(0,86,179,0.4)] hover:scale-110 transition-transform active:scale-90 duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="search">search</span>
+      </a>
+      <a
+        class="flex items-center justify-center text-blue-900/60 dark:text-slate-300 p-4 hover:scale-110 transition-transform active:scale-90 duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="pending_actions"
+          >pending_actions</span
+        >
+      </a>
+      <a
+        class="flex items-center justify-center text-blue-900/60 dark:text-slate-300 p-4 hover:scale-110 transition-transform active:scale-90 duration-300"
+        href="#"
+      >
+        <span class="material-symbols-outlined" data-icon="help_center"
+          >help_center</span
+        >
+      </a>
+    </nav>
+  </body>
+</html>

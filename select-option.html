@@ -1,0 +1,381 @@
+<!doctype html>
+
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#4350ae",
+              "on-background": "#191c1e",
+              "surface-bright": "#f7f9fb",
+              "on-primary-fixed": "#001a40",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "on-secondary-fixed": "#001f24",
+              "on-secondary-fixed-variant": "#004f58",
+              "surface-container-high": "#e6e8ea",
+              "surface-container": "#eceef0",
+              "surface-variant": "#e0e3e5",
+              "secondary-fixed-dim": "#00daf3",
+              background: "#f7f9fb",
+              "surface-tint": "#115cb9",
+              "surface-container-low": "#f2f4f6",
+              "inverse-on-surface": "#eff1f3",
+              "outline-variant": "#c2c6d4",
+              tertiary: "#2a3795",
+              "on-tertiary-fixed-variant": "#303c9a",
+              "on-surface-variant": "#424752",
+              error: "#ba1a1a",
+              secondary: "#006875",
+              "on-tertiary-container": "#c8cdff",
+              "secondary-fixed": "#9cf0ff",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#d7e2ff",
+              "on-secondary-container": "#00616d",
+              "inverse-primary": "#acc7ff",
+              "surface-container-lowest": "#ffffff",
+              primary: "#003f87",
+              "on-tertiary-fixed": "#000c62",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-container": "#00e3fd",
+              "primary-container": "#0056b3",
+              "primary-fixed-dim": "#acc7ff",
+              "tertiary-fixed": "#dfe0ff",
+              surface: "#f7f9fb",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#bcc2ff",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#191c1e",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#bbd0ff",
+              outline: "#727784",
+              "inverse-surface": "#2d3133",
+              "on-primary-fixed-variant": "#004491",
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Public Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      .glass-panel {
+        backdrop-filter: blur(32px) saturate(150%);
+        -webkit-backdrop-filter: blur(32px) saturate(150%);
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .mesh-gradient {
+        background-image:
+          radial-gradient(at 0% 0%, #d7e2ff 0px, transparent 50%),
+          radial-gradient(at 100% 0%, #9cf0ff 0px, transparent 50%),
+          radial-gradient(at 100% 100%, #dfe0ff 0px, transparent 50%),
+          radial-gradient(at 0% 100%, #f7f9fb 0px, transparent 50%);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface text-on-surface font-body min-h-screen selection:bg-primary-fixed overflow-hidden"
+  >
+    <!-- Background Layer (The Monolith Space) -->
+    <div class="fixed inset-0 mesh-gradient z-0"></div>
+    <div
+      class="fixed inset-0 flex items-center justify-center pointer-events-none opacity-20"
+    >
+      <div
+        class="w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px]"
+      ></div>
+    </div>
+    <!-- Top Navigation Bar (Shared Component: TopAppBar) -->
+    <header
+      class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-white/40 dark:bg-slate-900/40 backdrop-blur-[32px] rounded-b-[32px] shadow-xl shadow-blue-900/5 font-headline tracking-tight"
+    >
+      <div class="flex items-center gap-3">
+        <span
+          class="material-symbols-outlined text-blue-800 dark:text-blue-300 text-3xl"
+          >account_balance</span
+        >
+        <span
+          class="text-2xl font-black text-blue-900 dark:text-white tracking-tighter"
+          >ETHÉREAL</span
+        >
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a
+          class="text-blue-700 dark:text-blue-300 font-bold hover:bg-white/20 transition-all px-4 py-2 rounded-full"
+          href="#"
+          >Bosh sahifa</a
+        >
+        <a
+          class="text-slate-600 dark:text-slate-400 hover:bg-white/20 transition-all px-4 py-2 rounded-full"
+          href="#"
+          >Xizmatlar</a
+        >
+        <a
+          class="text-slate-600 dark:text-slate-400 hover:bg-white/20 transition-all px-4 py-2 rounded-full"
+          href="#"
+          >Bog'lanish</a
+        >
+      </div>
+      <div class="flex items-center">
+        <button
+          class="px-6 py-2 bg-primary-container text-on-primary-container rounded-full font-bold text-sm tracking-widest scale-95 active:opacity-80 transition-all"
+        >
+          UZ|RU|EN
+        </button>
+      </div>
+    </header>
+    <!-- Content Canvas (Simulated Background Content) -->
+    <main class="relative z-10 pt-32 px-8 max-w-7xl mx-auto blur-sm">
+      <div class="grid grid-cols-12 gap-8">
+        <div
+          class="col-span-8 bg-surface-container-lowest/40 glass-panel rounded-xl h-64 p-8"
+        >
+          <div class="w-24 h-2 bg-primary/20 rounded-full mb-4"></div>
+          <div class="w-48 h-10 bg-primary/10 rounded-lg"></div>
+        </div>
+        <div
+          class="col-span-4 bg-surface-container-lowest/40 glass-panel rounded-xl h-64"
+        ></div>
+        <div
+          class="col-span-4 bg-surface-container-lowest/40 glass-panel rounded-xl h-96"
+        ></div>
+        <div class="col-span-8 grid grid-cols-2 gap-8">
+          <div
+            class="bg-surface-container-lowest/40 glass-panel rounded-xl h-44"
+          ></div>
+          <div
+            class="bg-surface-container-lowest/40 glass-panel rounded-xl h-44"
+          ></div>
+          <div
+            class="col-span-2 bg-surface-container-lowest/40 glass-panel rounded-xl h-44"
+          ></div>
+        </div>
+      </div>
+    </main>
+    <!-- Selection Modal Overlay -->
+    <div
+      class="fixed inset-0 z-[60] bg-on-surface/10 backdrop-blur-xl flex items-center justify-center p-6"
+    >
+      <div class="w-full max-w-6xl">
+        <!-- Modal Header -->
+        <div class="text-center mb-16">
+          <h1
+            class="font-headline text-5xl md:text-7xl font-black text-primary tracking-tighter mb-4"
+          >
+            Xush kelibsiz
+          </h1>
+          <p
+            class="font-body text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed"
+          >
+            Davom etish uchun o'zingizga mos bo'lgan kirish turini tanlang.
+            Bizning platforma orqali barcha davlat xizmatlaridan tez va oson
+            foydalaning.
+          </p>
+        </div>
+        <!-- Two Massive Glass Cards -->
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Card: Hodimlar -->
+          <button
+            class="group relative bg-surface-container-lowest/60 glass-panel rounded-xl p-12 text-left transition-all duration-500 hover:scale-[1.02] hover:bg-surface-container-lowest/90 hover:shadow-[0_40px_80px_-15px_rgba(0,63,135,0.15)] focus:outline-none ring-primary/0 ring-offset-4 ring-4 focus:ring-primary/20"
+          >
+            <div class="flex flex-col h-full justify-between gap-12">
+              <div class="flex justify-between items-start">
+                <div
+                  class="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-white shadow-2xl shadow-primary/30 transition-transform duration-500 group-hover:scale-110"
+                >
+                  <span
+                    class="material-symbols-outlined text-5xl"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >person</span
+                  >
+                </div>
+                <span
+                  class="material-symbols-outlined text-primary/20 text-4xl group-hover:text-primary transition-colors"
+                  >arrow_forward_ios</span
+                >
+              </div>
+              <div>
+                <h2
+                  class="font-headline text-4xl font-black text-on-surface mb-4 tracking-tight"
+                >
+                  Hodimlar
+                </h2>
+                <p
+                  class="font-body text-lg text-on-surface-variant leading-snug"
+                >
+                  Shaxsiy kabinetingizga kiring, arizalar holatini kuzating va
+                  shaxsiy ma'lumotlaringizni boshqaring.
+                </p>
+              </div>
+              <div class="pt-4">
+                <span
+                  class="inline-flex items-center gap-2 text-primary font-bold tracking-wide text-sm group-hover:translate-x-2 transition-transform"
+                >
+                  KIRISH
+                  <span class="material-symbols-outlined text-sm"
+                    >chevron_right</span
+                  >
+                </span>
+              </div>
+            </div>
+            <!-- Decorative back text -->
+            <div
+              class="absolute -bottom-4 -right-4 text-9xl font-black text-primary/5 select-none pointer-events-none group-hover:opacity-10 transition-opacity"
+            >
+              USER
+            </div>
+          </button>
+          <!-- Card: Tashkilotlar -->
+          <button
+            class="group relative bg-surface-container-lowest/60 glass-panel rounded-xl p-12 text-left transition-all duration-500 hover:scale-[1.02] hover:bg-surface-container-lowest/90 hover:shadow-[0_40px_80px_-15px_rgba(0,104,117,0.15)] focus:outline-none ring-secondary/0 ring-offset-4 ring-4 focus:ring-secondary/20"
+          >
+            <div class="flex flex-col h-full justify-between gap-12">
+              <div class="flex justify-between items-start">
+                <div
+                  class="w-24 h-24 rounded-full bg-gradient-to-br from-secondary to-secondary-container flex items-center justify-center text-white shadow-2xl shadow-secondary/30 transition-transform duration-500 group-hover:scale-110"
+                >
+                  <span
+                    class="material-symbols-outlined text-5xl"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >corporate_fare</span
+                  >
+                </div>
+                <span
+                  class="material-symbols-outlined text-secondary/20 text-4xl group-hover:text-secondary transition-colors"
+                  >arrow_forward_ios</span
+                >
+              </div>
+              <div>
+                <h2
+                  class="font-headline text-4xl font-black text-on-surface mb-4 tracking-tight"
+                >
+                  Tashkilotlar
+                </h2>
+                <p
+                  class="font-body text-lg text-on-surface-variant leading-snug"
+                >
+                  Korporativ boshqaruv, hisobotlar topshirish va davlat
+                  organlari bilan elektron hamkorlikni amalga oshiring.
+                </p>
+              </div>
+              <div class="pt-4">
+                <span
+                  class="inline-flex items-center gap-2 text-secondary font-bold tracking-wide text-sm group-hover:translate-x-2 transition-transform"
+                >
+                  BOSHQARUV
+                  <span class="material-symbols-outlined text-sm"
+                    >chevron_right</span
+                  >
+                </span>
+              </div>
+            </div>
+            <!-- Decorative back text -->
+            <div
+              class="absolute -bottom-4 -right-4 text-9xl font-black text-secondary/5 select-none pointer-events-none group-hover:opacity-10 transition-opacity"
+            >
+              BIZ
+            </div>
+          </button>
+        </div>
+        <!-- Footer Help Text -->
+        <div class="mt-20 text-center">
+          <button
+            class="inline-flex items-center gap-3 px-8 py-4 bg-surface-container-low hover:bg-surface-container-high transition-colors rounded-full text-on-surface-variant font-medium"
+          >
+            <span class="material-symbols-outlined">help</span>
+            Tanlashda yordam kerakmi? Qo'llab-quvvatlash markazi
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom Navigation Bar (Shared Component: BottomNavBar) -->
+    <nav
+      class="fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-6 py-4 bg-white/40 dark:bg-slate-900/40 backdrop-blur-[40px] rounded-[48px] mb-8 mx-auto w-[90%] max-w-lg shadow-2xl shadow-blue-900/10 font-inter font-medium glass-refraction"
+    >
+      <button
+        class="flex items-center justify-center bg-gradient-to-br from-blue-700 to-blue-500 text-white rounded-full p-4 shadow-[0_0_20px_rgba(0,86,179,0.4)] hover:scale-110 active:scale-90 duration-300"
+      >
+        <span class="material-symbols-outlined">home</span>
+      </button>
+      <button
+        class="flex items-center justify-center text-blue-900/60 dark:text-slate-300 p-4 hover:scale-110 active:scale-90 duration-300 transition-transform"
+      >
+        <span class="material-symbols-outlined">search</span>
+      </button>
+      <button
+        class="flex items-center justify-center text-blue-900/60 dark:text-slate-300 p-4 hover:scale-110 active:scale-90 duration-300 transition-transform"
+      >
+        <span class="material-symbols-outlined">pending_actions</span>
+      </button>
+      <button
+        class="flex items-center justify-center text-blue-900/60 dark:text-slate-300 p-4 hover:scale-110 active:scale-90 duration-300 transition-transform"
+      >
+        <span class="material-symbols-outlined">help_center</span>
+      </button>
+    </nav>
+    <!-- Liquid Fill Progress Decorative (Kiosk Specific) -->
+    <div class="fixed top-8 right-8 w-16 h-16 pointer-events-none z-50">
+      <svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+        <circle
+          class="text-secondary/10"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="45"
+          stroke="currentColor"
+          stroke-width="2"
+        ></circle>
+        <circle
+          class="text-secondary-fixed shadow-[0_0_10px_#9cf0ff]"
+          cx="50"
+          cy="50"
+          fill="none"
+          r="45"
+          stroke="currentColor"
+          stroke-dasharray="283"
+          stroke-dashoffset="70"
+          stroke-width="8"
+        ></circle>
+      </svg>
+    </div>
+  </body>
+</html>

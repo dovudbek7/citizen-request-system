@@ -1,0 +1,411 @@
+<!doctype html>
+
+<html class="light" lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Ethereal Kiosk - Murojaat Tizimi</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#4350ae",
+              "on-background": "#191c1e",
+              "surface-bright": "#f7f9fb",
+              "on-primary-fixed": "#001a40",
+              "on-error": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "on-secondary-fixed": "#001f24",
+              "on-secondary-fixed-variant": "#004f58",
+              "surface-container-high": "#e6e8ea",
+              "surface-container": "#eceef0",
+              "surface-variant": "#e0e3e5",
+              "secondary-fixed-dim": "#00daf3",
+              background: "#f7f9fb",
+              "surface-tint": "#115cb9",
+              "surface-container-low": "#f2f4f6",
+              "inverse-on-surface": "#eff1f3",
+              "outline-variant": "#c2c6d4",
+              tertiary: "#2a3795",
+              "on-tertiary-fixed-variant": "#303c9a",
+              "on-surface-variant": "#424752",
+              error: "#ba1a1a",
+              secondary: "#006875",
+              "on-tertiary-container": "#c8cdff",
+              "secondary-fixed": "#9cf0ff",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#d7e2ff",
+              "on-secondary-container": "#00616d",
+              "inverse-primary": "#acc7ff",
+              "surface-container-lowest": "#ffffff",
+              primary: "#003f87",
+              "on-tertiary-fixed": "#000c62",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-container": "#00e3fd",
+              "primary-container": "#0056b3",
+              "primary-fixed-dim": "#acc7ff",
+              "tertiary-fixed": "#dfe0ff",
+              surface: "#f7f9fb",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#bcc2ff",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#191c1e",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#bbd0ff",
+              outline: "#727784",
+              "inverse-surface": "#2d3133",
+              "on-primary-fixed-variant": "#004491",
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Public Sans"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f7f9fb;
+        overflow-x: hidden;
+      }
+      .headline-font {
+        font-family: "Public Sans", sans-serif;
+      }
+      .glass {
+        backdrop-filter: blur(32px) saturate(150%);
+        -webkit-backdrop-filter: blur(32px) saturate(150%);
+      }
+      .mesh-bg {
+        background-image:
+          radial-gradient(
+            at 0% 0%,
+            rgba(0, 86, 179, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 100%,
+            rgba(0, 227, 253, 0.1) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 50% 50%,
+            rgba(67, 80, 174, 0.05) 0px,
+            transparent 50%
+          );
+      }
+      .floating-shape {
+        position: absolute;
+        filter: blur(80px);
+        z-index: -1;
+        border-radius: 9999px;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed"
+  >
+    <!-- Fixed Mesh Background & Floating Shapes -->
+    <div class="fixed inset-0 mesh-bg -z-10 overflow-hidden">
+      <div
+        class="floating-shape w-[600px] h-[600px] bg-primary/10 -top-20 -left-20"
+      ></div>
+      <div
+        class="floating-shape w-[500px] h-[500px] bg-secondary/10 bottom-0 -right-20"
+      ></div>
+      <div
+        class="floating-shape w-[400px] h-[400px] bg-tertiary/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      ></div>
+    </div>
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-white/40 dark:bg-slate-900/40 backdrop-blur-[32px] rounded-b-[32px] shadow-xl shadow-blue-900/5"
+    >
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-blue-800 text-3xl"
+          >account_balance</span
+        >
+        <h1
+          class="text-2xl font-black text-blue-900 tracking-tighter headline-font uppercase"
+        >
+          ETHÉREAL
+        </h1>
+      </div>
+      <nav class="hidden md:flex items-center gap-8">
+        <a
+          class="text-blue-700 font-bold font-public-sans tracking-tight hover:bg-white/20 transition-all px-4 py-2 rounded-full"
+          href="#"
+          >Bosh sahifa</a
+        >
+        <a
+          class="text-slate-600 font-medium font-public-sans tracking-tight hover:bg-white/20 transition-all px-4 py-2 rounded-full"
+          href="#"
+          >Xizmatlar</a
+        >
+        <a
+          class="text-slate-600 font-medium font-public-sans tracking-tight hover:bg-white/20 transition-all px-4 py-2 rounded-full"
+          href="#"
+          >Statistika</a
+        >
+      </nav>
+      <button
+        class="bg-white/20 text-blue-800 font-bold px-6 py-2 rounded-full glass hover:bg-white/40 transition-all active:scale-95"
+      >
+        UZ|RU|EN
+      </button>
+    </header>
+    <!-- Main Content Canvas -->
+    <main
+      class="relative min-h-screen pt-32 pb-48 px-6 md:px-12 lg:px-24 flex flex-col items-center justify-center overflow-hidden"
+    >
+      <!-- Hero Section -->
+      <section class="w-full max-w-7xl grid lg:grid-cols-2 gap-16 items-center">
+        <div class="flex flex-col space-y-8 z-10">
+          <div
+            class="inline-flex items-center gap-2 bg-primary-fixed/30 text-on-primary-fixed-variant px-4 py-2 rounded-full w-fit"
+          >
+            <span
+              class="material-symbols-outlined text-sm"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >verified</span
+            >
+            <span class="text-xs font-bold tracking-widest uppercase font-label"
+              >Raqamli Hukumat Portali</span
+            >
+          </div>
+          <h2
+            class="text-6xl md:text-8xl font-black headline-font text-primary leading-[0.9] tracking-tighter"
+          >
+            Murojaat <br />
+            <span class="text-on-background">yuborish</span> <br />
+            <span class="text-secondary">tizimi</span>
+          </h2>
+          <p
+            class="text-lg md:text-xl text-on-surface-variant font-body max-w-lg leading-relaxed"
+          >
+            Davlat organlari bilan muloqotning eng zamonaviy va shaffof usuli.
+            Sizning ovozingiz — bizning ustuvorligimiz.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 pt-4">
+            <button
+              class="group relative px-10 py-6 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-xl shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-4"
+            >
+              <span>Murojaat qilish</span>
+              <span
+                class="material-symbols-outlined group-hover:translate-x-2 transition-transform"
+                >arrow_forward</span
+              >
+              <div
+                class="absolute inset-0 rounded-xl bg-primary-fixed opacity-0 group-hover:opacity-20 transition-opacity"
+              ></div>
+            </button>
+            <button
+              class="px-10 py-6 rounded-xl bg-white/40 glass text-primary font-bold text-xl transition-all hover:bg-white/60 active:scale-95 flex items-center justify-center gap-4"
+            >
+              <span class="material-symbols-outlined">help_center</span>
+              <span>FAQ / Savollar</span>
+            </button>
+          </div>
+        </div>
+        <!-- Visual Monolith Component (Asymmetric Bento) -->
+        <div class="relative hidden lg:block">
+          <div class="grid grid-cols-2 gap-6 rotate-3">
+            <div
+              class="bg-white/60 glass p-8 rounded-xl aspect-square flex flex-col justify-between shadow-2xl shadow-blue-900/5 translate-y-12"
+            >
+              <span
+                class="material-symbols-outlined text-5xl text-secondary"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >speed</span
+              >
+              <div>
+                <p class="text-3xl font-black headline-font text-on-background">
+                  15 daqiqa
+                </p>
+                <p class="text-sm text-on-surface-variant font-medium">
+                  O'rtacha javob vaqti
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-primary/5 glass p-8 rounded-xl aspect-square flex flex-col justify-between shadow-2xl shadow-blue-900/5"
+            >
+              <span
+                class="material-symbols-outlined text-5xl text-primary"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >security</span
+              >
+              <div>
+                <p class="text-3xl font-black headline-font text-on-background">
+                  100%
+                </p>
+                <p class="text-sm text-on-surface-variant font-medium">
+                  Xavfsiz ma'lumotlar
+                </p>
+              </div>
+            </div>
+            <div
+              class="col-span-2 bg-gradient-to-r from-secondary-container/40 to-primary-container/20 glass p-8 rounded-xl h-48 flex items-center gap-8 shadow-2xl shadow-blue-900/5 -translate-x-12"
+            >
+              <img
+                alt="Professional government environment"
+                class="h-full aspect-video rounded-lg object-cover"
+                data-alt="Modern high-tech government office interior with sleek white furniture and large blue digital displays in a cinematic lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnDS77MvFCVbC-cMUIWLxcBssfyKM_ups-ytjomEdSZ0_mzgEf6EVCAD4udyskWxO2bI_1vJZIs3n_YAErnhHqzR0OjvKltOGZDmRMAVPCag270PsuwJbMKGipCUf2tqW5PPgA1GEhpIVKoH4l5guRMgPdbaO0b5lUz70NadkxkND6-Lx_RrYH7RaWYtLOI072Z5pDu4YfagTtCJowvMCtMwvYdoJROdhEKRdlexVx8cKGzvrXRHl40JF76NqtKs3nleUSmKdo78k"
+              />
+              <div>
+                <p class="text-xl font-bold headline-font text-on-background">
+                  Portal yangiliklari
+                </p>
+                <p class="text-sm text-on-surface-variant leading-snug">
+                  Yangi interaktiv xizmatlar ishga tushirildi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Stats Section (Floating Cards) -->
+      <section class="w-full max-w-7xl mt-32 grid md:grid-cols-3 gap-8">
+        <div
+          class="bg-surface-container-lowest p-10 rounded-xl shadow-xl shadow-on-surface/5 border border-white/50"
+        >
+          <div
+            class="w-16 h-16 bg-secondary-fixed flex items-center justify-center rounded-full mb-6"
+          >
+            <span
+              class="material-symbols-outlined text-on-secondary-fixed text-3xl"
+              >group</span
+            >
+          </div>
+          <h3 class="text-4xl font-black headline-font mb-2">1.2M+</h3>
+          <p class="text-on-surface-variant font-medium">
+            Mamnun foydalanuvchilar
+          </p>
+        </div>
+        <div
+          class="bg-surface-container-lowest p-10 rounded-xl shadow-xl shadow-on-surface/5 border border-white/50"
+        >
+          <div
+            class="w-16 h-16 bg-primary-fixed flex items-center justify-center rounded-full mb-6"
+          >
+            <span
+              class="material-symbols-outlined text-on-primary-fixed text-3xl"
+              >fact_check</span
+            >
+          </div>
+          <h3 class="text-4xl font-black headline-font mb-2">450k+</h3>
+          <p class="text-on-surface-variant font-medium">
+            Yechilgan murojaatlar
+          </p>
+        </div>
+        <div
+          class="bg-surface-container-lowest p-10 rounded-xl shadow-xl shadow-on-surface/5 border border-white/50"
+        >
+          <div
+            class="w-16 h-16 bg-tertiary-fixed flex items-center justify-center rounded-full mb-6"
+          >
+            <span
+              class="material-symbols-outlined text-on-tertiary-fixed text-3xl"
+              >map</span
+            >
+          </div>
+          <h3 class="text-4xl font-black headline-font mb-2">204</h3>
+          <p class="text-on-surface-variant font-medium">Hududiy bo'limlar</p>
+        </div>
+      </section>
+      <!-- Dynamic Liquid Progress Indicator (Kiosk Specific) -->
+      <div
+        class="fixed bottom-32 right-12 hidden lg:flex flex-col items-center gap-4"
+      >
+        <div
+          class="w-32 h-32 rounded-full bg-white/40 glass p-1 flex items-center justify-center relative overflow-hidden"
+        >
+          <div
+            class="absolute bottom-0 w-full bg-secondary-fixed h-[72%] opacity-60"
+          ></div>
+          <div class="relative z-10 flex flex-col items-center">
+            <span class="text-2xl font-black headline-font text-primary"
+              >72%</span
+            >
+            <span
+              class="text-[10px] uppercase tracking-tighter font-bold text-primary/70"
+              >Yuklanish</span
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav
+      class="md:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-6 py-4 bg-white/40 dark:bg-slate-900/40 backdrop-blur-[40px] rounded-[48px] mb-8 mx-auto w-[90%] max-w-lg shadow-2xl shadow-blue-900/10"
+    >
+      <a
+        class="flex items-center justify-center bg-gradient-to-br from-blue-700 to-blue-500 text-white rounded-full p-4 shadow-[0_0_20px_rgba(0,86,179,0.4)] transition-transform active:scale-90"
+        href="#"
+      >
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >home</span
+        >
+      </a>
+      <a
+        class="flex items-center justify-center text-blue-900/60 p-4 hover:scale-110 transition-transform active:scale-90"
+        href="#"
+      >
+        <span class="material-symbols-outlined">search</span>
+      </a>
+      <a
+        class="flex items-center justify-center text-blue-900/60 p-4 hover:scale-110 transition-transform active:scale-90"
+        href="#"
+      >
+        <span class="material-symbols-outlined">pending_actions</span>
+      </a>
+      <a
+        class="flex items-center justify-center text-blue-900/60 p-4 hover:scale-110 transition-transform active:scale-90"
+        href="#"
+      >
+        <span class="material-symbols-outlined">help_center</span>
+      </a>
+    </nav>
+    <!-- FAB (Contextual for Home Screen) -->
+    <button
+      class="fixed bottom-12 right-12 hidden md:flex items-center justify-center w-20 h-20 rounded-full bg-primary text-white shadow-2xl shadow-primary/40 hover:scale-110 transition-transform active:scale-90 group"
+    >
+      <span
+        class="material-symbols-outlined text-4xl group-hover:rotate-90 transition-transform"
+        >add</span
+      >
+    </button>
+  </body>
+</html>
