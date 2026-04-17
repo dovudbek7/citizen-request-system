@@ -17,7 +17,7 @@ export function TopBar() {
           </div>
           <div className="hidden sm:block">
             <p className="font-display text-sm font-black uppercase tracking-tight text-primary dark:text-sky-300 sm:text-base">
-              Ulug'nor
+              Ulug'nor 
             </p>
             <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
               {t.brand.subtitle}

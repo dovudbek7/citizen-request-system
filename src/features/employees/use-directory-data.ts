@@ -88,19 +88,19 @@ export function useDirectoryData(locale: Locale): UseDirectoryDataResult {
     async function fetchData() {
       setLoading(true)
       setError(null)
-      console.log("[Directory] Fetching from API...")
+      // console.log("[Directory] Fetching from API...")
       try {
         const res = await fetch(API_ENDPOINTS.targets.list(toApiLocale(locale)))
-        console.log("[Directory] API response status:", res.status)
+        // console.log("[Directory] API response status:", res.status)
         if (!res.ok) throw new Error("Failed to fetch directory data")
         const json = await res.json()
-        console.log("[Directory] API raw data:", json)
+        // console.log("[Directory] API raw data:", json)
 
         if (!cancelled) {
           // Handle Django REST Framework paginated response
           const items = (json.results ?? json) as ApiTarget[]
-          console.log("[Directory] API items count:", items.length)
-          console.log("[Directory] API first item:", items[0])
+          // console.log("[Directory] API items count:", items.length)
+          // console.log("[Directory] API first item:", items[0])
           setData(items.map(item => transformTarget(item, locale)))
         }
       } catch (e: unknown) {

@@ -98,9 +98,9 @@ export function DirectoryPage({
               placeholder={t.directory.search}
               value={query}
             />
-            <Button type="button" variant="default">
-              Search
-            </Button>
+            {/* <Button type="button" variant="default">
+              Search12
+            </Button> */}
           </div>
         </div>
         <div className="mt-6 flex flex-wrap gap-3">

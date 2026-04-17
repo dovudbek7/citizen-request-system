@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils"
 
 const locales: Array<{ key: Locale; label: string }> = [
   { key: "uz", label: "O'zbekcha" },
-  { key: "kr", label: "Qoraqalpog'cha" },
+  { key: "kr", label: "Ўзбекча" },
   { key: "ru", label: "Русский" },
   { key: "en", label: "English" },
 ]
 
 const localeLabels: Record<Locale, string> = {
-  uz: "O'zbek",
-  kr: "Qaraqalpaq",
+  uz: "O'zbekcha",
+  kr: "Ўзбекча",
   ru: "Русский",
   en: "English",
 }
@@ -44,7 +44,7 @@ export function LanguageToggle() {
   }, [isOpen])
 
   return (
-    <div ref={dropdownRef} className="relative">
+    <div ref={dropdownRef} className="relative z-">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 rounded-full bg-white/45 px-4 py-2 text-sm font-semibold text-slate-600 transition-all focus-visible:outline-none focus-visible:ring-0 dark:bg-slate-900/60 dark:text-slate-300"
