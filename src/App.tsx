@@ -1,16 +1,19 @@
 import type { ReactNode } from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Navigate, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { AppLayout } from "@/components/layout/app-layout";
 import { LocaleProvider } from "@/hooks/use-locale";
+import { ThemeProvider } from "@/hooks/use-theme";
 import { HomePage } from "@/pages/home-page";
 import { DirectoryPage } from "@/pages/directory-page";
 import { FaqPage } from "@/pages/faq-page";
+import { AnalyticsPage } from "@/pages/analytics-page";
 import { RequestSelectionModal } from "@/features/request/request-selection-modal";
 import { ContactDetailModal } from "@/features/request/contact-detail-modal";
+import { MessageModal } from "@/features/request/message-modal";
 import { RatingModal } from "@/features/rating/rating-modal";
-import type { ContactEntity, DirectoryType } from "@/lib/types";
+import type { ContactEntity, DirectoryType, MessageMode } from "@/lib/types";
 
 function AnimatedPage({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -35,19 +38,9 @@ function AppRoutes() {
   const [selectionOpen, setSelectionOpen] = useState(false);
   const [activeType, setActiveType] = useState<DirectoryType>("employees");
   const [selectedItem, setSelectedItem] = useState<ContactEntity | null>(null);
-  const [callingMode, setCallingMode] = useState<"audio" | "video" | null>(null);
+  const [messageOpen, setMessageOpen] = useState(false);
+  const [messageMode, setMessageMode] = useState<MessageMode | null>(null);
   const [ratingOpen, setRatingOpen] = useState(false);
-
-  useEffect(() => {
-    if (!callingMode) return;
-
-    const timer = window.setTimeout(() => {
-      setCallingMode(null);
-      setRatingOpen(true);
-    }, 2200);
-
-    return () => window.clearTimeout(timer);
-  }, [callingMode]);
 
   const handleTypeSelect = (type: DirectoryType) => {
     setActiveType(type);
@@ -55,8 +48,18 @@ function AppRoutes() {
     navigate("/directory");
   };
 
-  const handleCall = (mode: "audio" | "video") => {
-    setCallingMode(mode);
+  const handleOpenMessage = (mode: MessageMode) => {
+    setMessageMode(mode);
+    setMessageOpen(true);
+  };
+
+  const handleCloseMessage = () => {
+    setMessageOpen(false);
+    setMessageMode(null);
+  };
+
+  const handleSentMessage = () => {
+    setRatingOpen(true);
   };
 
   return (
@@ -85,6 +88,14 @@ function AppRoutes() {
             }
           />
           <Route
+            path="/analytics"
+            element={
+              <AnimatedPage>
+                <AnalyticsPage />
+              </AnimatedPage>
+            }
+          />
+          <Route
             path="/faq"
             element={
               <AnimatedPage>
@@ -97,7 +108,8 @@ function AppRoutes() {
       </Routes>
 
       <RequestSelectionModal open={selectionOpen} onClose={() => setSelectionOpen(false)} onSelect={handleTypeSelect} />
-      <ContactDetailModal item={selectedItem} callingMode={callingMode} onCall={handleCall} onClose={() => setSelectedItem(null)} />
+      <ContactDetailModal item={selectedItem} messagingMode={messageMode} onClose={() => setSelectedItem(null)} onMessage={handleOpenMessage} />
+      <MessageModal item={selectedItem} mode={messageMode} onClose={handleCloseMessage} onSent={handleSentMessage} open={messageOpen} />
       <RatingModal open={ratingOpen} onClose={() => setRatingOpen(false)} />
     </>
   );
@@ -105,8 +117,10 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <LocaleProvider>
-      <AppRoutes />
-    </LocaleProvider>
+    <ThemeProvider>
+      <LocaleProvider>
+        <AppRoutes />
+      </LocaleProvider>
+    </ThemeProvider>
   );
 }

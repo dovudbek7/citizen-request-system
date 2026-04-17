@@ -1,31 +1,90 @@
-import { Globe2 } from "lucide-react";
-import { useLocale } from "@/hooks/use-locale";
-import type { Locale } from "@/lib/types";
-import { cn } from "@/lib/utils";
+import { useState, useRef, useEffect } from "react"
+import { Globe2, ChevronDown } from "lucide-react"
+import { useLocale } from "@/hooks/use-locale"
+import { API_ENDPOINTS } from "@/lib/api"
+import type { Locale } from "@/lib/types"
+import { cn } from "@/lib/utils"
 
-const locales: Locale[] = ["uz", "ru", "en"];
+const locales: Array<{ key: Locale; label: string }> = [
+  { key: "uz", label: "O'zbekcha" },
+  { key: "kr", label: "Qoraqalpog'cha" },
+  { key: "ru", label: "Русский" },
+  { key: "en", label: "English" },
+]
+
+const localeLabels: Record<Locale, string> = {
+  uz: "O'zbek",
+  kr: "Qaraqalpaq",
+  ru: "Русский",
+  en: "English",
+}
 
 export function LanguageToggle() {
-  const { locale, setLocale } = useLocale();
+  const { locale, setLocale, t } = useLocale()
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [isOpen])
 
   return (
-    <div className="flex items-center gap-2 rounded-full border border-white/60 bg-white/55 p-1 backdrop-blur-xl">
-      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-        <Globe2 className="h-5 w-5" />
-      </span>
-      {locales.map((item) => (
-        <button
-          key={item}
-          className={cn(
-            "min-h-10 rounded-full px-3 text-sm font-semibold uppercase transition-all",
-            locale === item ? "bg-primary text-white shadow-kiosk" : "text-slate-600 hover:bg-white/70",
-          )}
-          onClick={() => setLocale(item)}
-          type="button"
-        >
-          {item}
-        </button>
-      ))}
+    <div ref={dropdownRef} className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 rounded-full bg-white/45 px-4 py-2 text-sm font-semibold text-slate-600 transition-all focus-visible:outline-none focus-visible:ring-0 dark:bg-slate-900/60 dark:text-slate-300"
+        aria-label={t.common.language}
+      >
+        <Globe2 className="h-4 w-4" />
+        {localeLabels[locale]}
+        <ChevronDown
+          className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")}
+        />
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 top-full z-50 mt-2 w-48 rounded-[20px] border border-white/60 bg-white/95 shadow-lg backdrop-blur-xl dark:border-slate-700 dark:bg-slate-900/95">
+          <div className="p-2">
+            {locales.map(item => (
+              <button
+                key={item.key}
+                onClick={() => {
+                  setLocale(item.key)
+                  setIsOpen(false)
+                  fetch(API_ENDPOINTS.visits.create(), {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ language: item.key }),
+                  }).catch(() => {})
+                }}
+                className={cn(
+                  "w-full rounded-[16px] px-4 py-3 text-left text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-0",
+                  locale === item.key
+                    ? "bg-primary text-white dark:bg-sky-500 dark:text-slate-950"
+                    : "text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800",
+                )}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
-  );
+  )
 }

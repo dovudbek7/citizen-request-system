@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { translations } from "@/lib/translations";
 import type { Locale } from "@/lib/types";
 
@@ -9,10 +9,20 @@ interface LocaleContextValue {
   t: (typeof translations)[Locale];
 }
 
+const STORAGE_KEY = "citizen-request-locale";
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("uz");
+  const [locale, setLocale] = useState<Locale>(() => {
+    if (typeof window === "undefined") return "uz";
+    const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null;
+    return stored && stored in translations ? stored : "uz";
+  });
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    window.localStorage.setItem(STORAGE_KEY, locale);
+  }, [locale]);
 
   const value = useMemo(
     () => ({

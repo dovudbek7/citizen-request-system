@@ -1,19 +1,20 @@
-import { Clock3 } from "lucide-react";
-import { motion } from "framer-motion";
-import { AvatarFallback } from "@/components/common/avatar-fallback";
-import { StatusBadge } from "@/components/common/status-badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { useLocale } from "@/hooks/use-locale";
-import type { ContactEntity } from "@/lib/types";
+import { Clock3 } from "lucide-react"
+import { motion } from "framer-motion"
+import { AvatarFallback } from "@/components/common/avatar-fallback"
+import { StatusBadge } from "@/components/common/status-badge"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { useLocale } from "@/hooks/use-locale"
+import { getLocalizedText } from "@/lib/utils"
+import type { ContactEntity } from "@/lib/types"
 
 interface DirectoryGridProps {
-  items: ContactEntity[];
-  onOpen: (item: ContactEntity) => void;
+  items: ContactEntity[]
+  onOpen: (item: ContactEntity) => void
 }
 
 export function DirectoryGrid({ items, onOpen }: DirectoryGridProps) {
-  const { t } = useLocale();
+  const { locale, t } = useLocale()
 
   return (
     <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -23,31 +24,49 @@ export function DirectoryGrid({ items, onOpen }: DirectoryGridProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.06 }}
-          whileHover={{ y: -6 }}
+          whileTap={{ scale: 0.99 }}
         >
-          <Card className="flex h-full flex-col p-5">
+          <Card className="flex h-full flex-col p-5 shadow-md">
             <div className="flex items-start justify-between gap-4">
               <div className="h-20 w-20 overflow-hidden rounded-[24px]">
-                <AvatarFallback name={item.name} src={item.avatar} type={item.type} />
+                <AvatarFallback
+                  name={getLocalizedText(item.name, locale)}
+                  src={item.avatar}
+                  type={item.type}
+                />
               </div>
-              <StatusBadge availability={item.availability} />
             </div>
             <div className="mt-5 flex-1">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/70">{item.department}</p>
-              <h3 className="mt-2 font-display text-2xl font-black text-slate-950">{item.name}</h3>
-              <p className="mt-2 text-base font-medium text-secondary">{item.title}</p>
-              <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">{item.description}</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/70 dark:text-sky-300/80">
+                {getLocalizedText(item.department, locale)}
+              </p>
+              <h3 className="mt-2 font-display text-2xl font-black text-slate-950 dark:text-slate-100">
+                {getLocalizedText(item.name, locale)}
+              </h3>
+              <p className="mt-2 text-lg font-medium text-secondary dark:text-cyan-300">
+                {getLocalizedText(item.title, locale)}
+              </p>
+              <p className="mt-3 line-clamp-3 text-base leading-7 text-slate-600 dark:text-slate-300">
+                {getLocalizedText(item.description, locale)}
+              </p>
             </div>
-            <div className="mt-5 flex items-center gap-2 rounded-2xl bg-slate-100 px-4 py-3 text-sm text-slate-600">
+            <div className="mt-5 flex items-center gap-2 rounded-2xl bg-slate-100 px-4 py-3 text-base font-medium text-slate-700">
               <Clock3 className="h-4 w-4 text-primary" />
-              <span>{t.directory.workingHours}: {item.workingHours}</span>
+              <span>
+                {t.directory.workingHours}:{" "}
+                {getLocalizedText(item.workingHours, locale)}
+              </span>
             </div>
-            <Button className="mt-5 w-full" onClick={() => onOpen(item)} variant="outline">
+            <Button
+              className="mt-5 w-full"
+              onClick={() => onOpen(item)}
+              variant="outline"
+            >
               {t.directory.openProfile}
             </Button>
           </Card>
         </motion.div>
       ))}
     </div>
-  );
+  )
 }

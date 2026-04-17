@@ -6,14 +6,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
-import type { FaqItem, Locale } from "@/lib/types";
+import type { ApiFaqItem } from "@/features/faq/use-faq-data";
 
 interface FaqAccordionProps {
-  items: FaqItem[];
-  locale: Locale;
+  items: ApiFaqItem[];
 }
 
-export function FaqAccordion({ items, locale }: FaqAccordionProps) {
+export function FaqAccordion({ items }: FaqAccordionProps) {
   return (
     <Accordion className="space-y-4" collapsible type="single">
       {items.map((item, index) => (
@@ -24,10 +23,10 @@ export function FaqAccordion({ items, locale }: FaqAccordionProps) {
           transition={{ delay: index * 0.05 }}
         >
           <Card>
-            <AccordionItem value={item.id}>
-              <AccordionTrigger>{item.question[locale]}</AccordionTrigger>
+            <AccordionItem value={String(item.id)}>
+              <AccordionTrigger>{item.question}</AccordionTrigger>
               <AccordionContent>
-                {item.answer[locale]}
+                {item.answer}
               </AccordionContent>
             </AccordionItem>
           </Card>

@@ -11,7 +11,9 @@ export function StatusBadge({ availability, className }: { availability: Availab
     <div
       className={cn(
         "inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold",
-        online ? "bg-emerald-100 text-emerald-700" : "bg-slate-200 text-slate-600",
+        online
+          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300"
+          : "bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
         className,
       )}
     >
