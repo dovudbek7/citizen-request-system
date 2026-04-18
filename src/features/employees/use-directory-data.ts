@@ -25,6 +25,7 @@ interface ApiTarget {
   agency: string
   description: string
   working_hours: string
+  phone?: string
   image?: string
 }
 
@@ -49,6 +50,7 @@ function transformTarget(apiItem: ApiTarget, locale: Locale): ContactEntity {
     workingHours: localizedValue(apiItem.working_hours),
     availability: "offline" as Availability,
     tags: [],
+    phone: apiItem.phone,
     avatar:
       apiItem.image && apiItem.image !== "string" && apiItem.image.length > 0
         ? apiItem.image
@@ -70,7 +72,9 @@ export function useDirectoryData(locale: Locale): UseDirectoryDataResult {
   const fetchDetail = useCallback(
     async (id: string): Promise<ContactEntity | null> => {
       try {
-        const res = await fetch(API_ENDPOINTS.targets.detail(id, toApiLocale(locale)))
+        const res = await fetch(
+          API_ENDPOINTS.targets.detail(id, toApiLocale(locale)),
+        )
         if (!res.ok) throw new Error("Failed to fetch detail")
         const json = await res.json()
         // Transform single API item to ContactEntity

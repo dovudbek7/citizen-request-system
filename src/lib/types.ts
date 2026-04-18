@@ -4,7 +4,12 @@ export type DirectoryType = "employees" | "organizations"
 export type Availability = "online" | "offline"
 export type MessageMode = "text" | "video" | "audio"
 export type RingStatus = "pending" | "coming" | "busy" | "day_off"
-export type FaqCategory = "services" | "payments" | "security" | "working_hours" | "technical"
+export type FaqCategory =
+  | "services"
+  | "payments"
+  | "security"
+  | "working_hours"
+  | "technical"
 
 export type LocalizedText = Record<Locale, string>
 
@@ -26,6 +31,7 @@ export interface ContactEntity {
   workingHours: LocalizedText
   tags: LocalizedText[]
   avatar?: string
+  phone?: string
 }
 
 export interface FaqItem {
