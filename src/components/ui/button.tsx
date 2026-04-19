@@ -70,26 +70,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <motion.div
-        animate={
-          pulse && !props.disabled
-            ? {
-                boxShadow: [
-                  "0 0 0 0 rgba(34,211,238,0.00)",
-                  "0 0 0 8px rgba(34,211,238,0.10)",
-                  "0 0 0 0 rgba(34,211,238,0.00)",
-                ],
-              }
-            : undefined
-        }
-        className="inline-flex"
-        transition={
-          pulse && !props.disabled
-            ? { duration: 2.8, repeat: Infinity, ease: "easeInOut" }
-            : undefined
-        }
-        whileTap={{ scale: 0.97 }}
-      >
+      <motion.div whileTap={{ scale: 0.97 }}>
         <button
           ref={ref}
           className={cn(buttonVariants({ variant, size, pulse, className }))}
