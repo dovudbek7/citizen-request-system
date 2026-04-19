@@ -1,4 +1,4 @@
-export type Locale = "uz" | "kr" | "ru" | "en"
+export type Locale = "uz" | "kk" | "kir" | "ru" | "en"
 export type Theme = "light" | "dark"
 export type DirectoryType = "employees" | "organizations"
 export type Availability = "online" | "offline"
@@ -11,7 +11,7 @@ export type FaqCategory =
   | "working_hours"
   | "technical"
 
-export type LocalizedText = Record<Locale, string>
+export type LocalizedText = Partial<Record<Locale, string>>
 
 export interface ApiResponse<T> {
   results?: T[]

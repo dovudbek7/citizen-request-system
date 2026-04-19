@@ -22,7 +22,8 @@ const analyticsMetrics = [
     id: "requests",
     label: {
       uz: "Umumiy so'rovlar",
-      kr: "Жами муроажатлар",
+      kk: "Umumiy so'rovlar",
+      kir: "Жами муроажатлар",
       ru: "Всего обращений",
       en: "Total Requests",
     },
@@ -33,7 +34,8 @@ const analyticsMetrics = [
     id: "active",
     label: {
       uz: "Faol foydalanuvchilar",
-      kr: "Актив фойдаланувчилар",
+      kk: "Faol foydalanuvchilar",
+      kir: "Актив фойдаланувчилар",
       ru: "Активные пользователи",
       en: "Active Users",
     },
@@ -44,7 +46,8 @@ const analyticsMetrics = [
     id: "solved",
     label: {
       uz: "Hal qilingan",
-      kr: "Хал қилинган",
+      kk: "Hal qilingan",
+      kir: "Хал қилинган",
       ru: "Решено",
       en: "Resolved",
     },
@@ -55,7 +58,8 @@ const analyticsMetrics = [
     id: "rating",
     label: {
       uz: "O'rtacha baho",
-      kr: "Уртача бахо",
+      kk: "O'rtacha baho",
+      kir: "Уртача бахо",
       ru: "Средняя оценка",
       en: "Average Rating",
     },
@@ -69,7 +73,8 @@ const mostRequestedServices = [
     id: 1,
     label: {
       uz: "ID-karta yangilash",
-      kr: "ИД-карта янгилаш",
+      kk: "ID-karta yangilash",
+      kir: "ИД-карта янгилаш",
       ru: "Обновление ID-карты",
       en: "ID Card Renewal",
     },
@@ -79,7 +84,8 @@ const mostRequestedServices = [
     id: 2,
     label: {
       uz: "Soliq imtiyozlari",
-      kr: "Солик имтиёзлари",
+      kk: "Soliq imtiyozlari",
+      kir: "Солик имтиёзлари",
       ru: "Налоговые льготы",
       en: "Tax Benefits",
     },
@@ -89,7 +95,8 @@ const mostRequestedServices = [
     id: 3,
     label: {
       uz: "Pasport almashtirish",
-      kr: "Паспорт алмаштириш",
+      kk: "Pasport almashtirish",
+      kir: "Паспорт алмаштириш",
       ru: "Замена паспорта",
       en: "Passport Replacement",
     },
@@ -99,7 +106,8 @@ const mostRequestedServices = [
     id: 4,
     label: {
       uz: "Fuqarolik ro'yxatga olish",
-      kr: "Фуқаролик рўйхатга олиш",
+      kk: "Fuqarolik ro'yxatga olish",
+      kir: "Фуқаролик рўйхатга олиш",
       ru: "Регистрация гражданства",
       en: "Citizenship Registration",
     },
@@ -112,11 +120,12 @@ const locationServices = [
     id: 1,
     service: {
       uz: "Markaziy DXM",
-      kr: "Марказий ДХМ",
+      kk: "Markaziy DXM",
+      kir: "Марказий ДХМ",
       ru: "Центральный ЦГУ",
       en: "Central CSC",
     },
-    region: { uz: "Andijon", kr: "Андижон", ru: "Андижан", en: "Andijan" },
+    region: { uz: "Andijon", kk: "Andijon", kir: "Андижон", ru: "Андижан", en: "Andijan" },
     availability: "online",
     distanceKm: 1.2,
     etaMinutes: 5,
@@ -125,11 +134,12 @@ const locationServices = [
     id: 2,
     service: {
       uz: "IT-Park Filiali",
-      kr: "ИТ-Парк филиали",
+      kk: "IT-Park Filiali",
+      kir: "ИТ-Парк филиали",
       ru: "Филиал IT-Park",
       en: "IT-Park Branch",
     },
-    region: { uz: "Toshkent", kr: "Тошкент", ru: "Ташкент", en: "Tashkent" },
+    region: { uz: "Toshkent", kk: "Toshkent", kir: "Тошкент", ru: "Ташкент", en: "Tashkent" },
     availability: "busy",
     distanceKm: 4.5,
     etaMinutes: 15,
@@ -138,11 +148,12 @@ const locationServices = [
     id: 3,
     service: {
       uz: "Yangiyer DXM",
-      kr: "Янгиер ДХМ",
+      kk: "Yangiyer DXM",
+      kir: "Янгиер ДХМ",
       ru: "ЦГУ Янгиер",
       en: "Yangiyer CSC",
     },
-    region: { uz: "Sirdaryo", kr: "Сирдарё", ru: "Сырдарья", en: "Sirdarya" },
+    region: { uz: "Sirdaryo", kk: "Sirdaryo", kir: "Сирдарё", ru: "Сырдарья", en: "Sirdarya" },
     availability: "online",
     distanceKm: 2.8,
     etaMinutes: 8,
@@ -151,11 +162,12 @@ const locationServices = [
     id: 4,
     service: {
       uz: "Navoiy Kon-Metall",
-      kr: "Навоий Кон-Меттал",
+      kk: "Navoiy Kon-Metall",
+      kir: "Навоий Кон-Меттал",
       ru: "Навоий Кон-Меттал",
       en: "Navoi Mining & Metallurgy",
     },
-    region: { uz: "Navoiy", kr: "Навоий", ru: "Навои", en: "Navoi" },
+    region: { uz: "Navoiy", kk: "Navoiy", kir: "Навоий", ru: "Навои", en: "Navoi" },
     availability: "offline",
     distanceKm: 12.3,
     etaMinutes: 45,
@@ -164,11 +176,12 @@ const locationServices = [
     id: 5,
     service: {
       uz: "Buxoro Arxeologiya",
-      kr: "Бухоро Археология",
+      kk: "Buxoro Arxeologiya",
+      kir: "Бухоро Археология",
       ru: "Бухарская археология",
       en: "Bukhara Archaeology",
     },
-    region: { uz: "Buxoro", kr: "Бухоро", ru: "Бухара", en: "Bukhara" },
+    region: { uz: "Buxoro", kk: "Buxoro", kir: "Бухоро", ru: "Бухара", en: "Bukhara" },
     availability: "online",
     distanceKm: 6.1,
     etaMinutes: 20,
@@ -223,7 +236,8 @@ export function AnalyticsPage() {
   // Upcoming feature text by locale
   const upcomingText = {
     uz: "Tez kunda: Analitika bo'limi",
-    kr: "Тез кунда: Аналитика бўлими",
+    kk: "Tez kunda: Analitika bo'limi",
+    kir: "Тез кунда: Аналитика бўлими",
     ru: "Скоро: Раздел аналитики",
     en: "Coming Soon: Analytics Section",
   }
@@ -252,7 +266,7 @@ export function AnalyticsPage() {
               <span className="text-sm font-bold uppercase tracking-widest">
                 {locale === "uz"
                   ? "Live Statistics"
-                  : locale === "kr"
+                  : locale === "kk"
                     ? "Live Статистика"
                     : locale === "ru"
                       ? "Live статистика"
@@ -364,7 +378,7 @@ export function AnalyticsPage() {
                   {filter === "all"
                     ? locale === "uz"
                       ? "Barcha"
-                      : locale === "kr"
+                      : locale === "kk"
                         ? "Барча"
                         : locale === "ru"
                           ? "Все"
@@ -372,14 +386,14 @@ export function AnalyticsPage() {
                     : filter === "online"
                       ? locale === "uz"
                         ? "Onlayn"
-                        : locale === "kr"
+                        : locale === "kk"
                           ? "Онлайн"
                           : locale === "ru"
                             ? "Онлайн"
                             : "Online"
                       : locale === "uz"
                         ? "Priority"
-                        : locale === "kr"
+                        : locale === "kk"
                           ? "Приоритет"
                           : locale === "ru"
                             ? "Приоритет"

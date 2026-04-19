@@ -146,7 +146,7 @@ export const translations: Record<Locale, TranslationDictionary> = {
       comingSoonBadge: "Tez orada",
     },
   },
-  kr: {
+  kk: {
     brand: { subtitle: "Фуқаролар мурожаат тизими" },
     nav: {
       home: "Бош саҳифа",
@@ -291,6 +291,7 @@ export const translations: Record<Locale, TranslationDictionary> = {
       comingSoonBadge: "Тез орада",
     },
   },
+  kir: {} as any, // placeholder, will fill below
   ru: {
     brand: { subtitle: "Система обращений граждан" },
     nav: {
@@ -590,3 +591,6 @@ export const translations: Record<Locale, TranslationDictionary> = {
     },
   },
 }
+
+// Fill 'kir' with the same as 'kk' for now
+translations.kir = translations.kk;

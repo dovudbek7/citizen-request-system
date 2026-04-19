@@ -28,7 +28,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     () => ({
       locale,
       setLocale,
-      t: translations[locale],
+      t: translations[locale] || translations['uz'],
     }),
     [locale],
   );

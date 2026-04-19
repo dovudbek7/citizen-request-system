@@ -33,7 +33,8 @@ interface ApiTarget {
 function transformTarget(apiItem: ApiTarget, locale: Locale): ContactEntity {
   const localizedValue = (value: string): LocalizedText => ({
     uz: value,
-    kr: value,
+    kk: value,
+    kir: value,
     ru: value,
     en: value,
   })
@@ -60,7 +61,15 @@ function transformTarget(apiItem: ApiTarget, locale: Locale): ContactEntity {
 
 // Convert frontend locale to API locale format
 function toApiLocale(locale: Locale): string {
-  return locale
+  // Map frontend locales to API expected values
+  const localeMap: Record<Locale, string> = {
+    uz: "uz",
+    kk: "kk",
+    kir: "kir",
+    ru: "ru",
+    en: "en",
+  }
+  return localeMap[locale]
 }
 
 export function useDirectoryData(locale: Locale): UseDirectoryDataResult {
