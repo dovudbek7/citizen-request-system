@@ -191,7 +191,7 @@ export function ContactDetailModal({
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             <div className="relative overflow-hidden rounded-[24px] border border-white/40 bg-white/90 p-5 backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/85 sm:rounded-[32px] sm:p-8">
               {/* Close button */}
@@ -234,7 +234,7 @@ export function ContactDetailModal({
 
                   {item.tags && item.tags.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-2 sm:mt-6">
-                      {item.tags.map((tag) => (
+                      {item.tags.map(tag => (
                         <span
                           key={`${item.id}-${getLocalizedText(tag, locale)}`}
                           className="rounded-full bg-accent px-3 py-1.5 text-sm font-medium text-accent-foreground dark:bg-slate-800 dark:text-slate-200 sm:px-4 sm:py-2 sm:text-base"
@@ -264,7 +264,9 @@ export function ContactDetailModal({
                   {/* Ring button */}
                   <Button
                     className="w-full gap-3 text-base sm:text-lg"
-                    disabled={ringLoading || isRinging || Boolean(messagingMode)}
+                    disabled={
+                      ringLoading || isRinging || Boolean(messagingMode)
+                    }
                     onClick={handleRing}
                     pulse={!ringLoading && !ringStatus}
                     size="lg"
@@ -344,50 +346,43 @@ export function ContactDetailModal({
                   </div>
 
                   {/* Message buttons — always visible */}
-                  <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
                     <Button
-                      className="w-full text-xs sm:text-sm"
+                      className="flex-1 min-w-[140px] justify-center gap-2 px-4 text-sm"
                       disabled={Boolean(messagingMode)}
                       onClick={() => onMessage("text")}
                       size="lg"
                       variant="outline"
                     >
-                      <MessageSquareText className="h-4 w-4 sm:h-5 sm:w-5" />
-                      <span className="hidden sm:inline">
+                      <MessageSquareText className="h-4 w-4 shrink-0 text-primary" />
+                      <span className="truncate">
                         {t.directory.textMessage}
                       </span>
-                      <span className="sm:hidden">
-                        {t.directory.textMessage.split(" ")[0]}
-                      </span>
                     </Button>
+
                     <Button
-                      className="w-full text-xs sm:text-sm"
+                      className="flex-1 min-w-[140px] justify-center gap-2 px-4 text-sm"
                       disabled={Boolean(messagingMode)}
                       onClick={() => onMessage("audio")}
                       size="lg"
                       variant="outline"
                     >
-                      <Mic className="h-4 w-4 sm:h-5 sm:w-5" />
-                      <span className="hidden sm:inline">
+                      <Mic className="h-4 w-4 shrink-0 text-primary" />
+                      <span className="truncate">
                         {t.directory.audioMessage}
                       </span>
-                      <span className="sm:hidden">
-                        {t.directory.audioMessage.split(" ")[0]}
-                      </span>
                     </Button>
+
                     <Button
-                      className="w-full text-xs sm:text-sm"
+                      className="flex-1 min-w-[140px] justify-center gap-2 px-4 text-sm"
                       disabled={Boolean(messagingMode)}
                       onClick={() => onMessage("video")}
                       size="lg"
                       variant="outline"
                     >
-                      <Video className="h-4 w-4 sm:h-5 sm:w-5" />
-                      <span className="hidden sm:inline">
+                      <Video className="h-4 w-4 shrink-0 text-primary" />
+                      <span className="truncate">
                         {t.directory.videoMessage}
-                      </span>
-                      <span className="sm:hidden">
-                        {t.directory.videoMessage.split(" ")[0]}
                       </span>
                     </Button>
                   </div>

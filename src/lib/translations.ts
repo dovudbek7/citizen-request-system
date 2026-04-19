@@ -593,4 +593,4 @@ export const translations: Record<Locale, TranslationDictionary> = {
 }
 
 // Fill 'kir' with the same as 'kk' for now
-translations.kir = translations.kk;
+translations.kir = translations.kk
