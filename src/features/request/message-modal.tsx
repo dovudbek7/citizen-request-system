@@ -34,7 +34,7 @@ export function MessageModal({
   const [sent, setSent] = useState(false)
   const [videoBlob, setVideoBlob] = useState<Blob | null>(null)
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const navigate = useNavigate()
 
   // 1. Modal ochilganda statelarni tozalash

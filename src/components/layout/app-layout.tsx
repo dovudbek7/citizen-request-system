@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 export function AppLayout() {
   const navigate = useNavigate()
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
+const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     const resetTimer = () => {
