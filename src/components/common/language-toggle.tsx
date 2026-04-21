@@ -7,15 +7,16 @@ import { cn } from "@/lib/utils"
 
 const locales: Array<{ key: Locale; label: string }> = [
   { key: "uz", label: "O'zbekcha" },
-  { key: "kk", label: "Qoraqalpog'cha" },
+  { key: "kk", label: "Qaraqalpaq" },
   { key: "kir", label: "Ўзбекча" },
   { key: "ru", label: "Русский" },
   { key: "en", label: "English" },
 ]
 
+
 const localeLabels: Record<Locale, string> = {
   uz: "O'zbekcha",
-  kk: "Qoraqalpog'cha",
+  kk: "Qaraqalpaq",
   kir: "Ўзбекча",
   ru: "Русский",
   en: "English",

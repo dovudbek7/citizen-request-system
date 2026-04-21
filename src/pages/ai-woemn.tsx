@@ -28,6 +28,7 @@ const AiWomen = () => {
         overflow: "hidden",
       }}
     >
+      
       <video
         ref={videoRef}
         src={aiWomenVideo}
