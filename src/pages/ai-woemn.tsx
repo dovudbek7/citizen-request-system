@@ -102,7 +102,7 @@ const AiWomen = () => {
             gap: "10px",
           }}
         >
-          Keyingisi ➜
+          Murojat qilish ➜
         </button>
       </div>
 
