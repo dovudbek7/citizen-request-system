@@ -52,12 +52,16 @@ export function MessageModal({
   // 2. Idle Timer - Agar modal ochiq bo'lsa va harakat bo'lmasa redirect qilish
   useEffect(() => {
     if (!open) {
-      if (timerRef.current) clearTimeout(timerRef.current)
+      if (timerRef.current) {
+        clearTimeout(timerRef.current as unknown as number)
+      }
       return
     }
 
     const resetTimer = () => {
-      if (timerRef.current) clearTimeout(timerRef.current)
+      if (timerRef.current) {
+        clearTimeout(timerRef.current as unknown as number)
+      }
 
       timerRef.current = setTimeout(() => {
         onClose()
@@ -77,7 +81,9 @@ export function MessageModal({
     resetTimer()
 
     return () => {
-      if (timerRef.current) clearTimeout(timerRef.current)
+      if (timerRef.current) {
+        clearTimeout(timerRef.current as unknown as number)
+      }
       events.forEach(event => window.removeEventListener(event, resetTimer))
     }
   }, [open, navigate, onClose])
