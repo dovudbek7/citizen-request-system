@@ -5,33 +5,42 @@ import { ThemeToggle } from "@/components/common/theme-toggle"
 import { useLocale } from "@/hooks/use-locale"
 import { cn } from "@/lib/utils"
 import logo from "../../assets/logo.png"
+import AiWomen from "@/pages/ai-woemn"
 export function TopBar() {
   const { t } = useLocale()
 
   return (
     <header className="sticky top-0 z-40 w-full px-4 py-3">
-      <div 
+      <div
         className={cn(
           "mx-auto flex max-w-[1440px] items-center justify-between gap-2 px-4 py-3", // gap-4 ni gap-2 qildik
           "bg-white/70 backdrop-blur-xl border border-white/40",
           "dark:bg-slate-900/60 dark:border-slate-800/50",
-          "rounded-[28px] shadow-lg shadow-black/5"
+          "rounded-[28px] shadow-lg shadow-black/5",
         )}
       >
         {/* LOGO QISMI: flex-shrink-0 beramizki, u hech qachon qisqarmasin */}
-        <div className="flex flex-shrink-0 items-center gap-2 sm:gap-3">
-          <div className="flex-shrink-0">
-            <img src={logo} alt="Logo" className="h-9 w-auto sm:h-11 lg:h-12 object-contain" />
+        <NavLink to='/'>
+          <div className="flex flex-shrink-0 items-center gap-2 sm:gap-3">
+            <div className="flex-shrink-0">
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-9 w-auto sm:h-11 lg:h-12 object-contain"
+              />
+            </div>
+            <div className="hidden md:block flex-shrink-0">
+              {" "}
+              {/* sm dan md ga o'tkazdik, kichikroq ekranda yozuv yashirinadi */}
+              <p className="font-display text-sm font-black uppercase leading-none tracking-tight text-primary dark:text-sky-300">
+                Ulug'nor
+              </p>
+              <p className="mt-1 text-[12px] font-medium text-slate-500 dark:text-slate-400">
+                {t.brand.subtitle}
+              </p>
+            </div>
           </div>
-          <div className="hidden md:block flex-shrink-0"> {/* sm dan md ga o'tkazdik, kichikroq ekranda yozuv yashirinadi */}
-            <p className="font-display text-sm font-black uppercase leading-none tracking-tight text-primary dark:text-sky-300">
-              Ulug'nor 
-            </p>
-            <p className="mt-1 text-[9px] font-medium text-slate-500 dark:text-slate-400">
-              {t.brand.subtitle}
-            </p>
-          </div>
-        </div>
+        </NavLink>
 
         {/* NAVIGATSIYA: O'rtada qoladi, moslashuvchan bo'ladi */}
         <nav className="hidden lg:flex items-center gap-1.5 flex-1 justify-center px-4">

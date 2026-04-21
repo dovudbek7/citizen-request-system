@@ -46,9 +46,9 @@ export function DirectoryGrid({ items, onOpen }: DirectoryGridProps) {
               <p className="mt-2 text-lg font-medium text-secondary dark:text-cyan-300">
                 {getLocalizedText(item.title, locale)}
               </p>
-              <p className="mt-3 line-clamp-3 text-base leading-7 text-slate-600 dark:text-slate-300">
+              {/* <p className="mt-3 line-clamp-3 text-base leading-7 text-slate-600 dark:text-slate-300">
                 {getLocalizedText(item.description, locale)}
-              </p>
+              </p> */}
             </div>
             <div className="mt-5 flex items-center gap-2 rounded-2xl bg-slate-100 px-4 py-3 text-base font-medium text-slate-700">
               <Clock3 className="h-4 w-4 text-primary" />

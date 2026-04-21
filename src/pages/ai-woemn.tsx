@@ -59,7 +59,7 @@ const AiWomen = () => {
           onClick={toggleMute}
           style={{
             padding: "12px",
-            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            // backgroundColor: "rgba(0, 0, 0, 0.6)",
             color: "#fff",
             border: "none",
             borderRadius: "50%",
@@ -72,6 +72,7 @@ const AiWomen = () => {
             fontSize: "20px",
             backdropFilter: "blur(5px)",
           }}
+          className="bg-primary"
         >
           {isMuted ? "🔇" : "🔊"}
         </button>
@@ -92,7 +93,6 @@ const AiWomen = () => {
             padding: "15px 30px",
             fontSize: "16px",
             fontWeight: "bold",
-            backgroundColor: "#000",
             color: "#fff",
             border: "none",
             borderRadius: "50px",
@@ -101,24 +101,23 @@ const AiWomen = () => {
             display: "flex",
             alignItems: "center",
             gap: "10px",
-          }}
+          } }className="bg-primary"
         >
           Murojat qilish ➜
         </button>
       </div>
 
-      {/* AGAR OVOZ O'CHIK BO'LSA, EKRANDA KO'RSATMA (Opsional) */}
       {isMuted && (
         <div style={{
           position: 'absolute',
           top: '20px',
-          backgroundColor: 'rgba(0,0,0,0.3)',
           color: '#fff',
           padding: '5px 15px',
           borderRadius: '20px',
           fontSize: '12px',
           pointerEvents: 'none'
-        }}>
+        }} 
+        className="bg-primary">
           Ovozni yoqish uchun 🔇 tugmasini bosing
         </div>
       )}
