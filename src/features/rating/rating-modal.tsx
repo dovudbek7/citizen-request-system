@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { useLocale } from "@/hooks/use-locale"
 import { cn } from "@/lib/utils"
+import { useNavigate } from "react-router-dom"
 
 interface RatingModalProps {
   open: boolean
@@ -17,7 +18,7 @@ export function RatingModal({ open, onClose }: RatingModalProps) {
   const [rating, setRating] = useState(4)
   const [comment, setComment] = useState("")
   const [submitted, setSubmitted] = useState(false)
-
+  const navigate = useNavigate()
   const handleSubmit = () => {
     setSubmitted(true)
     window.setTimeout(() => {
@@ -25,6 +26,7 @@ export function RatingModal({ open, onClose }: RatingModalProps) {
       setComment("")
       setRating(4)
       onClose()
+      // navigate('/')
     }, 1200)
   }
 

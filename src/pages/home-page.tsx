@@ -15,7 +15,7 @@ export function HomePage({ onOpenSelection }: HomePageProps) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-      <Card className="overflow-hidden p-8 sm:p-10 lg:p-12">
+      <Card className="overflow-hidden p-8 sm:p-10 lg:p-12 shadow-lg shadow-black/10">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
           <div className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-base font-semibold text-accent-foreground dark:bg-slate-800 dark:text-slate-100">
             <ShieldCheck className="h-4 w-4" />
@@ -38,7 +38,7 @@ export function HomePage({ onOpenSelection }: HomePageProps) {
         </motion.div>
       </Card>
       <div className="grid gap-6">
-        <Card className="p-7">
+        <Card className="p-7 shadow-lg shadow-black/7">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/70 dark:text-sky-300/75">{t.home.statsLabel}</p>
           <div className="mt-6 space-y-4">
             {t.home.statsItems.map((item, index) => {
@@ -54,7 +54,7 @@ export function HomePage({ onOpenSelection }: HomePageProps) {
             })}
           </div>
         </Card>
-        <Card className="bg-gradient-to-br from-primary to-secondary p-7 text-white dark:from-slate-900 dark:to-slate-800">
+        <Card className="bg-gradient-to-br  from-primary to-secondary p-7 text-white dark:from-slate-900 dark:to-slate-800 shadow-lg shadow-black/20">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">{t.home.flowLabel}</p>
           <div className="mt-6 grid gap-4">
             {t.home.flowSteps.map((step, index) => (

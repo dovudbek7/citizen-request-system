@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { CheckCircle2, Mic, SendHorizonal, Video, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -10,6 +10,7 @@ import { API_ENDPOINTS } from "@/lib/api"
 import { useLocale } from "@/hooks/use-locale"
 import { getLocalizedText } from "@/lib/utils"
 import type { ContactEntity, MessageMode } from "@/lib/types"
+import { useNavigate } from "react-router-dom"
 
 interface MessageModalProps {
   item: ContactEntity | null
@@ -33,7 +34,10 @@ export function MessageModal({
   const [sent, setSent] = useState(false)
   const [videoBlob, setVideoBlob] = useState<Blob | null>(null)
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const navigate = useNavigate()
 
+  // 1. Modal ochilganda statelarni tozalash
   useEffect(() => {
     if (!open) {
       setSenderName("")
@@ -45,8 +49,42 @@ export function MessageModal({
     }
   }, [open])
 
+  // 2. Idle Timer - Agar modal ochiq bo'lsa va harakat bo'lmasa redirect qilish
+  useEffect(() => {
+    if (!open) {
+      if (timerRef.current) clearTimeout(timerRef.current)
+      return
+    }
+
+    const resetTimer = () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+
+      timerRef.current = setTimeout(() => {
+        onClose()
+        navigate("/", { replace: true })
+      }, 10000) // Test uchun 5 soniya
+    }
+
+    const events = [
+      "mousedown",
+      "mousemove",
+      "keypress",
+      "scroll",
+      "touchstart",
+    ]
+    events.forEach(event => window.addEventListener(event, resetTimer))
+
+    resetTimer()
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+      events.forEach(event => window.removeEventListener(event, resetTimer))
+    }
+  }, [open, navigate, onClose])
+
   if (!item || !mode) return null
 
+  // 3. Xabar yuborish funksiyasi
   const handleSend = async () => {
     setSending(true)
 
@@ -75,16 +113,20 @@ export function MessageModal({
 
       setSending(false)
       setSent(true)
+
+      // Muvaffaqiyatli yuborilgach redirect
       setTimeout(() => {
         onSent()
         onClose()
+        navigate("/", { replace: true })
       }, 900)
     } catch {
       setSending(false)
-      setSent(true)
+      setSent(true) // Xatolik bo'lsa ham UI yopilishi uchun
       setTimeout(() => {
         onSent()
         onClose()
+        navigate("/", { replace: true })
       }, 900)
     }
   }
@@ -109,7 +151,7 @@ export function MessageModal({
             className="max-h-[90vh] w-full max-w-2xl overflow-y-auto"
             exit={{ opacity: 0, y: 20, scale: 0.97 }}
             initial={{ opacity: 0, y: 20, scale: 0.97 }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             <div className="relative rounded-[24px] border border-white/40 bg-white/90 p-5 backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/85 sm:rounded-[32px] sm:p-8">
               {/* Close */}
@@ -154,7 +196,7 @@ export function MessageModal({
               {/* Sender name */}
               <div className="mt-3 sm:mt-4">
                 <Input
-                  onChange={(e) => setSenderName(e.target.value)}
+                  onChange={e => setSenderName(e.target.value)}
                   placeholder={t.directory.senderNamePlaceholder}
                   value={senderName}
                 />
@@ -164,14 +206,14 @@ export function MessageModal({
               {mode === "video" ? (
                 <div className="mt-3 sm:mt-4">
                   <VideoRecorder
-                    onComplete={(blob) => setVideoBlob(blob)}
+                    onComplete={blob => setVideoBlob(blob)}
                     onCancel={() => setVideoBlob(null)}
                   />
                 </div>
               ) : mode === "audio" ? (
                 <div className="mt-3 sm:mt-4">
                   <AudioRecorder
-                    onComplete={(blob) => setAudioBlob(blob)}
+                    onComplete={blob => setAudioBlob(blob)}
                     onCancel={() => setAudioBlob(null)}
                   />
                 </div>
@@ -179,14 +221,14 @@ export function MessageModal({
                 <div className="mt-3 sm:mt-4">
                   <Textarea
                     autoFocus
-                    onChange={(e) => setMessage(e.target.value)}
+                    onChange={e => setMessage(e.target.value)}
                     placeholder={t.directory.messagePlaceholder}
                     value={message}
                   />
                 </div>
               )}
 
-              {/* Sent */}
+              {/* Sent Status UI */}
               {sent ? (
                 <div className="mt-4 flex items-center gap-3 rounded-[20px] bg-emerald-100 px-4 py-3 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300 sm:mt-6 sm:rounded-[24px] sm:py-4">
                   <CheckCircle2 className="h-5 w-5" />
@@ -196,7 +238,7 @@ export function MessageModal({
                 </div>
               ) : null}
 
-              {/* Send */}
+              {/* Action Button */}
               {!sent && (
                 <Button
                   className="mt-4 w-full sm:mt-6"

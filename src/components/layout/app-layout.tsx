@@ -1,18 +1,42 @@
-import { Outlet } from "react-router-dom"
-import { BackgroundShell } from "@/components/layout/background-shell"
+import { useEffect, useRef } from "react"
+import { Outlet, useNavigate } from "react-router-dom"
 import { TopBar } from "@/components/layout/top-bar"
 import { BottomNav } from "@/components/layout/bottom-nav"
 import { cn } from "@/lib/utils"
 
 export function AppLayout() {
+  const navigate = useNavigate()
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    const resetTimer = () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+      
+      timerRef.current = setTimeout(() => {
+        navigate("/")
+      }, 1000 * 60 * 5) // 5000ms = 5s
+    }
+
+    const events = ["mousedown", "mousemove", "keypress", "scroll", "touchstart"]
+
+    events.forEach((event) => window.addEventListener(event, resetTimer))
+    
+    resetTimer()
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+      events.forEach((event) => window.removeEventListener(event, resetTimer))
+    }
+  }, [navigate])
+
   return (
     <div className="relative min-h-screen overflow-x-hidden px-3 pb-28 pt-4 transition-colors dark:bg-slate-950 sm:px-4 sm:pb-32 lg:px-6 lg:pb-10">
       
-      {/* 1. ASOSIY FON (Diagonal Grid) */}
+      {/* 1. ASOSIY FON */}
       <div
         className={cn(
           "fixed inset-0 pointer-events-none transition-colors duration-500",
-          "bg-[#fafafa] dark:bg-slate-950" // Light modeda oq, Dark modeda to'q ko'k/qora
+          "bg-[#fafafa] dark:bg-slate-950"
         )}
         style={{
           zIndex: 0,

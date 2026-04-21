@@ -39,7 +39,7 @@ export function FaqPage() {
   return (
     <div className="grid gap-6 lg:grid-cols-[0.34fr_0.66fr]">
       {/* Chap tomondagi asosiy Card */}
-      <Card className="h-fit p-6 sm:p-8 border-white/40 bg-white/70 backdrop-blur-xl rounded-[32px] shadow-2xl dark:bg-slate-900/60 dark:border-slate-800/50 shadow-black/5">
+      <Card className="h-fit p-6 sm:p-8 border-white/40 bg-white/70 backdrop-blur-xl rounded-[32px] dark:bg-slate-900/60 dark:border-slate-800/50 shadow-lg shadow-black/5">
         <h1 className="font-display text-4xl font-black tracking-tight text-primary dark:text-sky-400 sm:text-5xl">
           {t.faq.title}
         </h1>
@@ -80,7 +80,7 @@ export function FaqPage() {
             {t.faq.loading}
           </Card>
         ) : filteredItems.length ? (
-          <div className="rounded-[32px] overflow-hidden">
+          <div className="rounded-[32px] overflow-hidden shadow-xl/30">
              <FaqAccordion items={filteredItems} />
           </div>
         ) : (

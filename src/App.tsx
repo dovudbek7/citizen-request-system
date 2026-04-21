@@ -63,13 +63,14 @@ function AppRoutes() {
   const handleCloseMessage = () => {
     setMessageOpen(false)
     setMessageMode(null)
+    setSelectedItem(null)
   }
 
   const handleSentMessage = () => {
     setRatingOpen(true)
   }
 
- return (
+  return (
     <>
       <Routes>
         <Route path="/" element={<AiWomen />} />
@@ -96,16 +97,45 @@ function AppRoutes() {
               </AnimatedPage>
             }
           />
-          <Route path="/analytics" element={<AnimatedPage><AnalyticsPage /></AnimatedPage>} />
-          <Route path="/faq" element={<AnimatedPage><FaqPage /></AnimatedPage>} />
+          <Route
+            path="/analytics"
+            element={
+              <AnimatedPage>
+                <AnalyticsPage />
+              </AnimatedPage>
+            }
+          />
+          <Route
+            path="/faq"
+            element={
+              <AnimatedPage>
+                <FaqPage />
+              </AnimatedPage>
+            }
+          />
         </Route>
 
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
 
-      <RequestSelectionModal open={selectionOpen} onClose={() => setSelectionOpen(false)} onSelect={handleTypeSelect} />
-      <ContactDetailModal item={selectedItem} messagingMode={messageMode} onClose={() => setSelectedItem(null)} onMessage={handleOpenMessage} />
-      <MessageModal item={selectedItem} mode={messageMode} onClose={handleCloseMessage} onSent={handleSentMessage} open={messageOpen} />
+      <RequestSelectionModal
+        open={selectionOpen}
+        onClose={() => setSelectionOpen(false)}
+        onSelect={handleTypeSelect}
+      />
+      <ContactDetailModal
+        item={selectedItem}
+        messagingMode={messageMode}
+        onClose={() => setSelectedItem(null)}
+        onMessage={handleOpenMessage}
+      />
+      <MessageModal
+        item={selectedItem}
+        mode={messageMode}
+        onClose={handleCloseMessage}
+        onSent={handleSentMessage}
+        open={messageOpen}
+      />
       <RatingModal open={ratingOpen} onClose={() => setRatingOpen(false)} />
     </>
   )

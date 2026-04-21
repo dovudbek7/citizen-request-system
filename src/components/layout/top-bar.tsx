@@ -36,7 +36,7 @@ export function TopBar() {
         {/* NAVIGATSIYA: O'rtada qoladi, moslashuvchan bo'ladi */}
         <nav className="hidden lg:flex items-center gap-1.5 flex-1 justify-center px-4">
           {[
-            ["/", t.nav.home],
+            ["/home", t.nav.home],
             ["/directory", t.nav.directory],
             ["/analytics", t.nav.analytics],
             ["/faq", t.nav.faq],

@@ -80,7 +80,7 @@ export function DirectoryPage({
 
   return (
     <div className="space-y-6">
-      <Card className="p-6 sm:p-8">
+      <Card className="p-6 sm:p-8  shadow-lg shadow-black/5">
         <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/70 dark:text-sky-300/75">
