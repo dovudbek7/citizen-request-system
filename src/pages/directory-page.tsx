@@ -29,8 +29,9 @@ export function DirectoryPage({
   const deferredQuery = useDeferredValue(query)
 
   // API integration
-  const { data, loading, error, refetch, fetchDetail } = useDirectoryData(locale)
-  
+  const { data, loading, error, refetch, fetchDetail } =
+    useDirectoryData(locale)
+
   const items = data.length
     ? data
     : loading
@@ -51,7 +52,8 @@ export function DirectoryPage({
             getLocalizedText(item.title, locale),
             getLocalizedText(item.description, locale),
             getLocalizedText(item.department, locale),
-            item.tags?.map(tag => getLocalizedText(tag, locale)).join(" ") ?? "",
+            item.tags?.map(tag => getLocalizedText(tag, locale)).join(" ") ??
+              "",
           ]
             .join(" ")
             .toLowerCase()
@@ -68,43 +70,54 @@ export function DirectoryPage({
 
   return (
     <div className="flex flex-col space-y-4 2xl:space-y-6">
-      
       {/* HEADER CARD - Ixcham va Elegant */}
       <Card className="overflow-hidden border-none bg-white/90 p-4 shadow-xl shadow-black/5 backdrop-blur-xl dark:bg-slate-900/90 sm:p-6 2xl:p-8">
         <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
-          
           {/* Title & Type Indicator */}
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary dark:bg-sky-500/10 dark:text-sky-400 2xl:h-16 2xl:w-16">
-              {activeType === "employees" ? <UserRound className="h-6 w-6 2xl:h-8 2xl:w-8" /> : <Building2 className="h-6 w-6 2xl:h-8 2xl:w-8" />}
+              {activeType === "employees" ? (
+                <UserRound className="h-6 w-6 2xl:h-8 2xl:w-8" />
+              ) : (
+                <Building2 className="h-6 w-6 2xl:h-8 2xl:w-8" />
+              )}
             </div>
             <div>
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 dark:text-sky-300/60 2xl:text-xs">
                 {t.directory.title}
               </p>
               <h1 className="font-display text-2xl font-black tracking-tight text-primary dark:text-sky-300 2xl:text-4xl">
-                {activeType === "employees" ? t.directory.employees : t.directory.organizations}
+                {activeType === "employees"
+                  ? t.directory.employees
+                  : t.directory.organizations}
               </h1>
             </div>
           </div>
 
           {/* Action Area: Switcher & Search */}
           <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto lg:items-center 2xl:gap-4">
-            
             {/* Custom Tab Switcher */}
             <div className="inline-flex h-12 items-center rounded-xl bg-slate-100 p-1 dark:bg-slate-800 2xl:h-14 2xl:rounded-2xl">
               {[
-                { key: "employees" as const, label: t.directory.employees, icon: UserRound },
-                { key: "organizations" as const, label: t.directory.organizations, icon: Building2 },
+                {
+                  key: "employees" as const,
+                  label: t.directory.employees,
+                  icon: UserRound,
+                },
+                {
+                  key: "organizations" as const,
+                  label: t.directory.organizations,
+                  icon: Building2,
+                },
               ].map(({ key, label, icon: Icon }) => (
                 <button
                   key={key}
                   onClick={() => onTypeChange(key)}
                   className={cn(
                     "flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold transition-all 2xl:rounded-xl 2xl:px-6 2xl:text-lg",
-                    activeType === key 
-                      ? "bg-white text-primary shadow-sm dark:bg-slate-700 dark:text-sky-300" 
-                      : "text-slate-500 hover:text-primary dark:text-slate-400"
+                    activeType === key
+                      ? "bg-white text-primary shadow-sm dark:bg-slate-700 dark:text-sky-300"
+                      : "text-slate-500 hover:text-primary dark:text-slate-400",
                   )}
                 >
                   <Icon className="h-4 w-4 2xl:h-5 2xl:w-5" />
@@ -127,7 +140,10 @@ export function DirectoryPage({
 
       {/* Active Selection Breadcrumb - Faqat tanlanganda chiqadi */}
       {selectedItem && (
-        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
           <Card className="border-none bg-primary/5 p-3 dark:bg-sky-500/5 2xl:p-4">
             <p className="text-center text-sm font-medium text-slate-600 dark:text-slate-300 2xl:text-lg">
               {t.directory.activeSelection}:{" "}
@@ -142,7 +158,7 @@ export function DirectoryPage({
       {/* Grid Content - Kiosk uchun 4 ustunli (2xl) */}
       <div className="relative min-h-[400px] pb-12">
         {loading ? (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 2xl:gap-6">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 2xl:grid-cols-5 2xl:gap-6">
             {Array.from({ length: 8 }).map((_, i) => (
               <motion.div
                 key={i}
@@ -159,7 +175,9 @@ export function DirectoryPage({
           </div>
         ) : (
           <Card className="flex h-64 flex-col items-center justify-center border-none bg-slate-50/50 text-center dark:bg-slate-900/30">
-            <p className="text-lg font-medium text-slate-500 2xl:text-2xl">{t.directory.noResults}</p>
+            <p className="text-lg font-medium text-slate-500 2xl:text-2xl">
+              {t.directory.noResults}
+            </p>
           </Card>
         )}
       </div>

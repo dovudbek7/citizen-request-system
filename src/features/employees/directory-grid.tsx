@@ -17,7 +17,7 @@ export function DirectoryGrid({ items, onOpen }: DirectoryGridProps) {
   const { locale, t } = useLocale()
 
   return (
-    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
       {items.map((item, index) => (
         <motion.div
           key={item.id}
@@ -50,13 +50,13 @@ export function DirectoryGrid({ items, onOpen }: DirectoryGridProps) {
                 {getLocalizedText(item.description, locale)}
               </p> */}
             </div>
-            <div className="mt-5 flex items-center gap-2 rounded-2xl bg-slate-100 px-4 py-3 text-base font-medium text-slate-700">
+            {/* <div className="mt-5 flex items-center gap-2 rounded-2xl bg-slate-100 px-4 py-3 text-base font-medium text-slate-700">
               <Clock3 className="h-4 w-4 text-primary" />
               <span>
                 {t.directory.workingHours}:{" "}
                 {getLocalizedText(item.workingHours, locale)}
               </span>
-            </div>
+            </div> */}
             <Button
               className="mt-5 w-full"
               onClick={() => onOpen(item)}
