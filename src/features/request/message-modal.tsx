@@ -63,10 +63,13 @@ export function MessageModal({
         clearTimeout(timerRef.current as unknown as number)
       }
 
-      timerRef.current = setTimeout(() => {
-        onClose()
-        navigate("/", { replace: true })
-      }, 10000) // Test uchun 5 soniya
+      timerRef.current = setTimeout(
+        () => {
+          onClose()
+          navigate("/", { replace: true })
+        },
+        5 * 60 * 1000,
+      ) // Test uchun 5 soniya
     }
 
     const events = [
