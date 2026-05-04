@@ -21,6 +21,8 @@ import { MessageModal } from "@/features/request/message-modal"
 import { RatingModal } from "@/features/rating/rating-modal"
 import type { ContactEntity, DirectoryType, MessageMode } from "@/lib/types"
 import AiWomen from "./pages/ai-woemn"
+import { FrozenPage } from "@/pages/frozen-page"
+import { SITE_FROZEN } from "@/lib/site-config"
 
 function AnimatedPage({ children }: { children: ReactNode }) {
   const location = useLocation()
@@ -145,7 +147,13 @@ export default function App() {
   return (
     <ThemeProvider>
       <LocaleProvider>
-        <AppRoutes />
+        {SITE_FROZEN ? (
+          <Routes>
+            <Route path="*" element={<FrozenPage />} />
+          </Routes>
+        ) : (
+          <AppRoutes />
+        )}
       </LocaleProvider>
     </ThemeProvider>
   )
