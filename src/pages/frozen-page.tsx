@@ -22,7 +22,7 @@ const descriptionText: Record<Locale, string> = {
 }
 
 const badgeText: Record<Locale, string> = {
-  uz: "To'lov kutilmoqda",
+  uz: "Website vaqtincha to'xtatildi",
   kk: "To'lov kutilmoqda",
   kir: "Тўлов кутилмоқда",
   ru: "Ожидается оплата",
@@ -92,9 +92,9 @@ export function FrozenPage() {
             {badgeText[locale]}
           </div>
 
-          <h1 className="mt-5 font-display text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
+          {/* <h1 className="mt-5 font-display text-2xl font-black tracking-tight text-slate-900 sm:text-3xl">
             {titleText[locale]}
-          </h1>
+          </h1> */}
 
           {/* <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
             {descriptionText[locale]}
