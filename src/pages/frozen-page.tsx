@@ -96,12 +96,12 @@ export function FrozenPage() {
             {titleText[locale]}
           </h1>
 
-          <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
+          {/* <p className="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
             {descriptionText[locale]}
-          </p>
+          </p> */}
 
-          <div className="mt-6 border-t border-slate-200 pt-5 text-xs text-slate-400">
-            © {new Date().getFullYear()}
+          <div className="mt-1  border-slate-200 pt-5 text-xs text-slate-400">
+            
           </div>
         </motion.div>
       </div>
